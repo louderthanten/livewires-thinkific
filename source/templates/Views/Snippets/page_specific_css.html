@@ -1,0 +1,135 @@
+{% comment %}
+  Place CSS that you need on a specific page here.
+  The name of the page is available as page.page_identifier
+  Note that any CSS placed here must be wrapped in a <style> tag.
+{% endcomment %}
+{% case page.page_identifier %}
+  {% when "site_landing_page" %}
+    {% comment %} CSS specific to the site landing page {% endcomment %}
+    {% if site.has_banner %}
+      <style type="text/css">
+        .page-banner {
+          background: url({{ site.banner_url }});
+          background-size: cover;
+        }
+      </style>
+    {% else %}
+      <style type="text/css">
+        .page-banner {
+          background: {{site.brand_colour}};
+        }
+      </style>
+    {% endif %}
+  {% when "bundle_landing_page" %}
+    {% comment %} CSS specific to the bundle landing page {% endcomment %}
+
+    {% comment %}
+      You can further refine this CSS if you need to have different CSS on
+      different Bundle Landing Pages. To do so, you can check the 'page_name'
+      property of the current page.
+    {% endcomment %}
+
+    {% if page.bundle_has_banner %}
+      <style type="text/css">
+        .page-banner {
+          background:
+            linear-gradient({{ page.linear_gradient_rgb }}, {{ page.linear_gradient_rgb }}),
+            url({{ page.bundle_banner_image_url }});
+          background-size: cover;
+        }
+      </style>
+      <!--[if lte IE 9]>
+        <style type="text/css">
+          .page-banner {
+            background: url({{ page.bundle_banner_image_url  }});
+            background-size: cover;
+          }
+        </style>
+      <![endif]-->
+    {% else %}
+      <style type="text/css">
+        .page-banner {
+          background: {{site.brand_colour}};
+        }
+      </style>
+    {% endif %}
+  {% when "course_landing_page" %}
+    {% comment %} CSS specific to course landing pages {% endcomment %}
+
+    {% comment %}
+      You can further refine this CSS if you need to have different CSS on
+      different Course Landing Pages. To do so, you can check the 'page_name'
+      property of the current page.
+    {% endcomment %}
+
+    {% if page.has_course_banner %}
+      <style type="text/css">
+        .page-banner {
+          background:
+            linear-gradient({{ page.linear_gradient_rgb }}, {{ page.linear_gradient_rgb }}),
+            url({{ page.course_banner_url }});
+          background-size: cover;
+        }
+      </style>
+      <!--[if lte IE 9]>
+        <style type="text/css">
+          .page-banner {
+            background: url({{ page.course_banner_url }});
+            background-size: cover;
+          }
+        </style>
+      <![endif]-->
+    {% else %}
+      <style type="text/css">
+        .page-banner {
+          background: {{site.brand_colour}};
+        }
+      </style>
+    {% endif %}
+  {% when "collections_page" %}
+    {% comment %} CSS specific to the collections page {% endcomment %}
+  {% when "collection_page" %}
+    {% comment %} CSS specific to the collection page {% endcomment %}
+  {% when "sign_in_page" %}
+    {% comment %} CSS specific to the sign in page {% endcomment %}
+  {% when "sign_up_page" %}
+    {% comment %} CSS specific to the sign up page {% endcomment %}
+  {% when "student_dashboard_page" %}
+    {% comment %} CSS specific to the student dashboard page {% endcomment %}
+  {% when "privacy_policy_page" %}
+    {% comment %} CSS specific to the privacy policy page {% endcomment %}
+  {% when "terms_of_use_page" %}
+    {% comment %} CSS specific to the terms of use page {% endcomment %}
+  {% when "checkout_page" %}
+    {% comment %} CSS specific to the checkout page {% endcomment %}
+  {% when "checkout_thankyou_page" %}
+    {% comment %} CSS specific to the checkout thankyou page {% endcomment %}
+  {% when "paypal_confirmation_page" %}
+    {% comment %} CSS specific to the PayPal confirmation page {% endcomment %}
+  {% when "checkout_signin_signup_page" %}
+    {% comment %} CSS specific to the checkout signin/signup page {% endcomment %}
+  {% when "new_course_review_page" %}
+    {% comment %} CSS specific to the new course review page {% endcomment %}
+  {% when "edit_course_review_page" %}
+    {% comment %} CSS specific to the edit course review page {% endcomment %}
+  {% when "my_account_page" %}
+    {% comment %} CSS specific to the account edit profile page {% endcomment %}
+  {% when "my_account_password_page" %}
+    {% comment %} CSS specific to the account change password page {% endcomment %}
+  {% when "my_account_notifications_page" %}
+    {% comment %} CSS specific to the account notifications page {% endcomment %}
+  {% when "my_account_billings_page" %}
+    {% comment %} CSS specific to the account billings page {% endcomment %}
+  {% when "my_account_order_list_page" %}
+    {% comment %} CSS specific to the account order history page {% endcomment %}
+  {% when "my_account_order_page" %}
+    {% comment %} CSS specific to the account single order page {% endcomment %}
+  {% when "my_account_certificates_page" %}
+    {% comment %} CSS specific to the account certificates page {% endcomment %}
+  {% when "password_reset_request_page" %}
+    {% comment %} CSS specific to the password reset request page {% endcomment %}
+  {% when "password_reset_sent_page" %}
+    {% comment %} CSS specific to the password reset email sent page {% endcomment %}
+  {% when "password_reset_page" %}
+    {% comment %} CSS specific to the password reset page {% endcomment %}
+{% endcase %}

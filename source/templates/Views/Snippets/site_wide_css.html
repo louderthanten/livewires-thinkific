@@ -1,0 +1,14 @@
+{% comment %}
+  This is your site-wide CSS
+  It will be used in the header of every page on your site, regardless of
+  whether the page is a part of the theme or not.
+
+  It is not wrapped in a <style> tag, so here it must be placed in one.
+
+  Note that this CSS is always the LAST custom CSS included on the page.
+{% endcomment %}
+{% if site.has_site_wide_custom_css %}
+  <style type="text/css">
+    {{ site.site_wide_custom_css }}
+  </style>
+{% endif %}

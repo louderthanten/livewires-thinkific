@@ -1,0 +1,12 @@
+{% comment %}
+  These are the course values shown at the top of the course landing page.
+{% endcomment %}
+<div class='landing__course-titles'>
+  <h1> {{ page.course_name }}</h1>
+  <h5>
+    {% if page.has_course_subtitle %}
+      {{ page.course_subtitle }} |
+    {% endif %}
+    {{ 'liquid.partials.course_landing_page_header_titles.text_taught_by' | translate }} {{ page.course_instructor_full_name }}
+  </h5>
+</div>

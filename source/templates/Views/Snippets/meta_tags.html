@@ -1,0 +1,98 @@
+{% comment %}
+  Place meta-tags here.
+{% endcomment %}
+
+{% comment %} Site-wide meta tags. These will be on every page in the site {% endcomment %}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+{% comment %} If you have a Google Site Verification Meta Tag, add it {% endcomment %}
+{% if site.has_google_verification_meta_tag %}
+  <meta name="google-site-verification" content="{{ site.google_verification_meta_tag }}">
+{% endif %}
+
+{% comment %}
+  Page specific meta tags. These will be on only the page specified.
+  The name of the page is available as page.page_identifier
+{% endcomment %}
+{% case page.page_identifier %}
+  {% when "site_landing_page" %}
+    {% comment %} Metatags specific to the site landing page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "course_landing_page" %}
+    {% comment %} Metatags specific to the Course landing page {% endcomment %}
+
+    {% comment %}
+      You can further refine these meta tags if you need to have different
+      meta tags on different Course Landing Pages. To do so, you can check
+      the 'page_name' property of the current page.
+    {% endcomment %}
+
+    {% if page.has_seo_title %}
+      <title>{{ page.seo_title }}</title>
+    {% else %}
+      <title>{{ site.name }}</title>
+    {% endif %}
+    {% if page.has_seo_description %}
+      <meta name='description' content='{{ page.seo_description }}'>
+    {% endif %}
+    {% if page.has_keywords %}
+      <meta name='keywords' content='{{ page.keywords }}'>
+    {% endif %}
+  {% when "bundle_landing_page" %}
+    {% comment %} Metatags specific to the Bundle landing page {% endcomment %}
+
+    {% comment %}
+      You can further refine these meta tags if you need to have different
+      meta tags on different Bundle Landing Pages. To do so, you can check
+      the 'page_name' property of the current page.
+    {% endcomment %}
+
+    {% if page.has_seo_title %}
+      <title>{{ page.seo_title }}</title>
+    {% else %}
+      <title>{{ site.name }}</title>
+    {% endif %}
+    {% if page.has_seo_description %}
+      <meta name='description' content='{{ page.seo_description }}'>
+    {% endif %}
+    {% if page.has_keywords %}
+      <meta name='keywords' content='{{ page.keywords }}'>
+    {% endif %}
+  {% when "collections_page" %}
+    {% comment %} Metatags specific to the collections page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "collection_page" %}
+    {% comment %} Metatags specific to the collection page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "sign_in_page" %}
+    {% comment %} Metatags specific to the sign in page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "sign_up_page" %}
+    {% comment %} Metatags specific to the sign up page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "student_dashboard_page" %}
+    {% comment %} Metatags specific to the student dashboard page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "privacy_policy_page" %}
+    {% comment %} Metatags specific to the privacy policy page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "terms_of_use_page" %}
+    {% comment %} Metatags specific to the terms of use page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "checkout_page" %}
+    {% comment %} Metatags specific to the checkout page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "checkout_thankyou_page" %}
+    {% comment %} Metatags specific to the checkout thankyou page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "paypal_confirmation_page" %}
+    {% comment %} Metatags specific to the PayPal confirmation page {% endcomment %}
+    <title>{{ site.name }}</title>
+  {% when "checkout_signin_signup_page" %}
+    {% comment %} Metatags specific to the checkout signin/signup page {% endcomment %}
+    <title>{{ site.name }}</title>
+{% endcase %}

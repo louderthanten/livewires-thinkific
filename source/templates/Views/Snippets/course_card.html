@@ -1,0 +1,58 @@
+{% comment %}
+  This is the card representation (the square box that appears in your course catalog
+  for each course) of your course.
+{% endcomment %}
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+  <div class="{{ card.status }} course-card" data-card-url="{{ card.landing_page_url }}">
+    <div class="course-card__img-container">
+      <img src="{{ card.image_url }}" alt="" class="course-card__img" />
+    </div>
+    <div class="course-card__body">
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="course-card__instructor-name">
+            {{ card.instructor_full_name }}
+          </div>
+        </div>
+        <div class="col-xs-5">
+          {% if card.public %}
+            <div class="{{ card.price_css_class }} course-card__price">
+              {{ card.display_price }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="course-card__title">
+            {{ card.name }}
+          </h4>
+          <p class="course-card__description">
+            {{ card.subtitle_truncated }}
+          </p>
+        </div>
+      </div>
+
+      {% if card.reviews_enabled and card.approved_reviews_count > 0 %}
+      <div class="row">
+        <div class="col-md-12">
+          <span class="star-rating star-rating__input" data-id="{{ card.average_rating }}">
+          {% for index in (1..5) %}
+            <input type="radio" name="rating" value="{{ index }}"  />
+            {% star_rating card.average_rating, index %}
+          {% endfor %}
+          </span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="course-card__cta">
+      <div class="row">
+        <div class="col-md-12">
+          <a href="{{ card.landing_page_url }}" class="btn btn-primary btn-block">{{ 'liquid.partials.course_card.link_landing_page' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

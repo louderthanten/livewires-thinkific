@@ -1,0 +1,29 @@
+{%comment %}
+  These are the upsells that appear on your course or bundle landing page.
+{% endcomment %}
+{% if page.has_related_products %}
+  <div class="course-multi-products">
+    {% if page.has_related_products_label %}
+        <h2 class="section-title">
+            {{ page.related_products_label }}
+        </h2>
+    {% endif %}
+    {% for related_product in page.related_products %}
+      <div class="row multi-product__item">
+        <div class="col-sm-9 multi-product__description">
+          <div class="price">
+              {{ related_product.display_price }}
+          </div>
+          <div class="title">
+              {{ related_product.product_name }}
+          </div>
+        </div>
+        <div class="col-sm-3 multi-product__buy">
+          <a href="{{ related_product.add_to_cart_url }}" class="btn btn-primary multi-product__cta">
+            {{ related_product.button_text_without_price }}
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

@@ -1,0 +1,17 @@
+{% comment %}
+  This represents a course within a bundle and is used on the bundle landing page
+  to show a course within the bundle.
+{% endcomment %}
+<div class="bundle-content__item">
+  <div class="row">
+    <div class="col-sm-2 hidden-xs">
+      <img src="{{ course.image_url }}" class="bundle-content__item-img round-img" />
+    </div>
+    <div class="col-sm-10">
+      <div class="bundle-content__item-title">
+        {{ course.name }}
+      </div>
+      <a href="{{ course.landing_page_url }}" class="bundle-content__item-link">{{ 'liquid.partials.bundle_course.link_landing_page' | translate }}</a>
+    </div>
+  </div>
+</div>

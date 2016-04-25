@@ -1,0 +1,101 @@
+{% comment %}
+  This is the built-in high converting course landing page.
+{% endcomment %}
+<div class="container">
+
+  {% comment %} The big image banner and CTA buttons at the top of the page {% endcomment %}
+  <div class="row landing__course-banner">
+    <div class="col-sm-12">
+      <img src="{{page.course_banner_url}}" class="img-responsive" />
+    </div>
+  </div>
+
+  {% comment %} If a users enters a coupon URL ( yoursite.com?coupon=100) they
+  will see a small section that displays details about the coupon. {% endcomment %}
+  {% if page.coupon_code_provided %}
+    <div class="row">
+      <div class="col-sm-12">
+        {% include "course_landing_page_coupon_block" %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="row">
+    <div class="col-sm-12 text-center">      
+      {% include "course_landing_page_header_titles" %}
+      {% if page.has_course_intro_video %}
+        {% include 'course_intro_video' %}
+        <br>
+        <br>
+      {% endif %}  
+      {% include "course_landing_page_action_buttons" %}
+    </div> 
+  </div>
+  
+  {% comment %} Display the course description {% endcomment %}
+  {% if page.course_has_description %}
+    <hr>
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>
+          {{ 'liquid.views.course_landing_page.header_course_description' | translate }}
+        </h2>
+        <p>{{ page.course_description }}</p>
+      </div>
+    </div>
+  {% endif %}
+
+  {% comment %} Display the course instructor {% endcomment %}
+  <hr>
+  <div class="row">
+    <div class="col-sm-3">
+      <img alt="{{ page.course_instructor_full_name}}" class="instructor__img" src="{{ page.course_instructor_avatar_url }}">
+      <h3>{{ page.course_instructor_full_name }}</h3>
+      <h5>{{ page.course_instructor_title }}</h5>
+    </div>
+    <div class="col-sm-9">      
+      <p>{{ page.course_instructor_bio }}</p>
+      {% if page.has_course_contact_information %}
+        <p><strong>{{ page.course_contact_information }}</strong></p>
+      {% endif %}
+    </div>
+  </div>
+  <hr>
+
+  {% comment %} Display the course curriculum {% endcomment %}
+  <div class="column landing__course-curriculum">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>
+          {{ 'liquid.views.course_landing_page.header_course_curriculum' | translate }}
+        </h2>
+        {% include "course_landing_page_curriculum" %}
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Display course reviews if the course has any {% endcomment %}
+  {% if page.reviews_enabled and page.approved_reviews_count > 0 %}
+    <hr>
+    <div class="column">
+      <div class="row">
+        <div class="col-md-12">
+          {% include "course_review" course:page.course %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  
+  {% comment %} Display any related products (upsells) {% endcomment %}
+  {% if page.has_related_products %}
+    <hr>
+    <div class="column">
+      <div class="row">
+        <div class="col-sm-12">
+          {% include "landing_page_upsells" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+</div>

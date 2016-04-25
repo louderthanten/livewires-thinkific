@@ -1,0 +1,51 @@
+{% comment %}
+  This is the checkout thankyou page.
+  Specifically, this is the page where a user lands after purchasing a course
+  or a bundle.
+{% endcomment %}
+
+<div class="container checkout-form checkout-thankyou">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">      
+      <h4 class="text-center">
+        {{ 'liquid.views.checkout_thankyou_page.title_thank_you' | translate }}
+        {% for item in page.items %}
+          {{ item.name }}
+        {% endfor %}
+      </h4>
+      {% if page.product_is_course %}
+        <div class="text-center">
+          <a class="btn btn-primary btn-lg" href="{{ page.take_course_url }}">
+            {{ 'liquid.views.checkout_thankyou_page.link_start_learning' | translate }}
+          </a>
+        </div>
+      {% else %}
+        {% for bundled_course in page.bundled_courses %}
+          <div class="row checkout-thankyou__bundle-item">
+            <div class="col-sm-9">
+              <h5>{{ bundled_course.name }}</h5>
+            </div>
+            <div class="col-sm-3">
+              <a class="btn btn-primary" href="{{ bundled_course.take_course_url }}">
+                {{ 'liquid.views.checkout_thankyou_page.link_start_learning' | translate }}
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+          {% if page.has_more_bundled_courses %}
+              {{ page.remaining_bundle_courses_message }}
+          {% endif %}
+        {% endif %}
+        <br>
+        <br>
+        <p class="text-center">
+          {{ 'liquid.views.checkout_thankyou_page.text_info' | translate }}
+          <a href="{{ page.order_receipt_url }}", class="text-underline">
+            {{ 'liquid.views.checkout_thankyou_page.link_order_receipt' | translate }}
+          </a>
+        </p>
+    </div>
+  </div>
+</div>
+
+{% include "thankyou_upsells" %}

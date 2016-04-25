@@ -1,0 +1,25 @@
+{% comment %}
+  Javascript run at the bottom of the student dashboard page
+{% endcomment %}
+<script>
+  $(function() {
+
+    {% comment %} Variables {% endcomment %}
+    var result = /[\?&]status=(\w+)/.exec(window.location.href);
+    var statusDropdown = $('#status');
+    var searchForm = $("#search-form");
+
+    {% comment %} Set the initial value of the status dropdown {% endcomment %}
+    if(result != null) {
+      statusDropdown.val(result[1]);
+    }
+
+    {% comment %} When the status dropdown changes, update thew view to show enrollments in the appropriate status {% endcomment %}
+    statusDropdown.on("change", function() {
+      var status = $(this).val();
+      if(status) {
+        searchForm.submit();
+      }
+    });
+  });
+</script>

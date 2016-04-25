@@ -1,0 +1,51 @@
+{% comment %}
+  This is the page students will see when they log in. It shows their all of
+  the courses they have taken, and lets them filter by
+  Completed, In Progress or Expired.
+{% endcomment %}
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-12 text-center student-dashboard__hero'>
+      <h2>{{ 'liquid.views.student_dashboard.header_dashboard' | translate }}</h2>
+      <a href='{{ site.collections_url }}'>
+        {{ 'liquid.views.student_dashboard.link_view_more_courses' | translate }}
+      </a>
+    </div>
+  </div>
+
+  <div class='products__filters'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <form id='search-form' class='form-inline' action='{{ site.student_dashboard_url }}' method='get'>
+          <select name='status' id='status' class='form-control'>
+            {% for type in page.status_types %}
+              <option value='{{type[0]}}'>{{type[1]}}</option>
+            {% endfor %}
+          </select>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Display the course and bundle cards {% endcomment %}
+
+  {% if page.enrolled_cards != empty %}
+    {% assign cards = page.enrolled_cards | sort: 'last_accessed' | reverse %}
+    {% paginate cards by 6 %}
+      <div class="row">
+        {% for card in paginate.collection %}
+          {% include 'dashboard_course_card' with card %}
+        {% endfor %}
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          {% include 'pagination' with paginate %}
+        </div>
+      </div>
+    {% endpaginate %}
+  {% else %}
+    {{ 'liquid.views.student_dashboard.text_no_courses_found' | translate }}
+  {% endif %}
+</div>

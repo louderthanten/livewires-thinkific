@@ -1,0 +1,15 @@
+{% comment %}
+  This is the signin/signup page that preceeds the checkout page.
+  Specifically, this is the page where a user can either sign in or sign up
+  as a part of the purchase process. It preceeds the step where the user
+  enters his or her credit card details.
+  
+  Note that you cannot edit the actual form, however the surrounding content
+  of the page may be modified.
+{% endcomment %}
+
+    <div class="container checkout-form checkout-auth-container">
+      <div class="row">
+        {{ page.checkout_authentication_form }}
+      </div>
+    </div>

@@ -1,0 +1,57 @@
+{% comment %}
+  These are the buttons that can appear on a course landing page
+  Free Trial, Buy, Enroll for Free, etc.
+{% endcomment %}
+{% unless page.course_is_draft %}
+  {% if page.course_is_public %}
+    <div class='landing__course-buttons'>
+      <div class='row'>
+        <div class='col-sm-12'>
+          {% if page.show_enroll_in_free_trial_link %}
+            <a href="{{ page.free_trial_enrollment_url }}" class="btn btn-secondary btn-lg btn-top-free-trial">
+              {{ 'liquid.partials.course_landing_page_action_buttons.link_free_trial' | translate }}
+            </a>
+          {% endif %}
+          {% if page.show_purchase_link %}
+            <a href="{{ page.buy_course_url }}" class="btn btn-primary btn-lg btn-purchase">
+              {{ page.course_buy_button_text }}
+            </a>
+          {% endif %}
+          {% if page.show_resume_link %}
+            {% unless page.enrollment_complete %}
+              <a href="{{ page.resume_course_url }}" class="btn btn-primary btn-lg btn_resume_course">
+                {{ 'liquid.partials.course_landing_page_action_buttons.link_resume_course' | translate }}
+              </a>
+            {% else %}
+              <a href="{{ page.resume_course_url }}" class="btn btn-primary btn-lg btn_resume_course">
+                {{ 'liquid.partials.course_landing_page_action_buttons.link_review_course' | translate }}
+              </a>
+            {% endunless %}
+          {% endif %}
+          {% if page.show_enroll_for_free_link %}
+            <a href="{{ page.enroll_for_free_url }}" class="btn btn-primary btn-lg btn-purchase">
+              {{ 'liquid.partials.course_landing_page_action_buttons.link_enroll_free' | translate }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    {% if page.show_resume_link %}
+      {% unless page.enrollment_complete %}
+        <a href="{{ page.resume_course_url }}" class="btn btn-primary btn-lg btn_resume_course">
+          {{ 'liquid.partials.course_landing_page_action_buttons.link_resume_course' | translate }}
+        </a>
+      {% else %}
+        <a href="{{ page.resume_course_url }}" class="btn btn-primary btn-lg btn_resume_course">
+          {{ 'liquid.partials.course_landing_page_action_buttons.link_review_course' | translate }}
+        </a>
+      {% endunless %}
+    {% else %}
+      <div class='landing__private-title'>
+        {{ 'liquid.partials.course_landing_page_action_buttons.text_email_us' | translate }}
+        {{ site.support_email }}
+      </div>
+    {% endif %}
+  {% endif %}
+{% endunless %}

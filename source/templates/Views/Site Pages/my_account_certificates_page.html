@@ -1,0 +1,25 @@
+{% comment %}
+  This is the 'my account certificates' page.
+  Here, a user can view all of their completed certificates.
+  Note: Completion Certificates are only available on certain plans.
+        This page will be hidden if Completion Certificates are not enabled.
+{% endcomment %}
+<div class="container student-profile" id="account">
+  <div class="row">
+    <div class="col-md-3">
+      {% include 'my_account_menu' %}
+    </div>
+    <div class="col-md-9">
+      <h4>
+        {{ 'liquid.views.my_account_certificates_page.header_my_certificates' | translate }}
+      </h4>
+      {% if site.current_user.has_certificates %}
+        {{ page.certificates_table }}
+      {% else %}
+        <p>
+          {{ 'liquid.views.my_account_certificates_page.msg_no_certificates' | translate }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</div>

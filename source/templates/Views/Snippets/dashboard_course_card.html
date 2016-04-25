@@ -1,0 +1,72 @@
+{% comment %}
+  This is the student dashboard course card.
+{% endcomment %}
+<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+  <div class='course-card progress-card'>
+    <div class='course-card__img-container'>
+      <img class='course-card__img' src='{{ card.image_url }}' />
+    </div>
+    <div class='course-card__body'>
+      <div class='row'>
+        <div class='col-xs-12'>
+          <h4 class='course-card__title' title='{{ card.name }}'>
+            {{ card.name_truncated }}
+          </h4>
+        </div>
+      </div>
+      <div class='row'>
+        {% if card.has_enrollment %}
+          <div class='col-xs-12'>
+            <div class='progress-card-progress'>
+              <div class='progress-completion'>{{ card.progress_percentage }}%</div>
+              <div class='progress-line'>
+                <div class='progress-line-bar'></div>
+                <div class='progress-line-percent' style="width: {{ card.progress_percentage }}%"></div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class='course-card__cta'>
+      <div class='row'>
+        <div class='col-xs-12'>
+          {% if card.course_reviews_enabled %}
+            <div class="course-card__cta-secondary">
+              <div class="row">
+                <div class="col-sm-6">
+                  <a href="{{ card.landing_page_url }}" class="btn btn-block">
+                    {{ 'liquid.partials.dashboard_course_card.link_see_overview' | translate }}
+                  </a>
+                </div>
+                <div class="col-sm-6">
+                  <a href="{{ card.course_review_url}}" class="btn btn-block">
+                    {{ 'liquid.partials.dashboard_course_card.link_rate_course' | translate }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <div class="course-card__cta-secondary">
+              <a href="{{ card.landing_page_url }}" class="btn btn-block">
+                {{ 'liquid.partials.dashboard_course_card.link_see_overview' | translate }}
+              </a>
+            </div>
+          {% endif %}
+
+          {% if card.show_resume_link %}
+            {% if card.enrollment_complete %}
+              <a href='{{ card.review_course_url }}' class="btn btn-block btn-primary">
+                {{ 'liquid.partials.dashboard_course_card.link_review_course' | translate }}
+              </a>
+            {% else %}
+              <a href='{{ card.resume_course_url }}' class="btn btn-block btn-primary">
+                {{ 'liquid.partials.dashboard_course_card.link_resume_course' | translate }}
+              </a>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

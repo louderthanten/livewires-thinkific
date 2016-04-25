@@ -1,0 +1,15 @@
+{% comment %}
+  This handles the changing of the category dropdown on the collections pages
+{% endcomment %}
+<script>
+  $(function() {
+    {% comment %} Variables {% endcomment %}
+    var categoryDropdownList = $("#collection_id");
+    var searchForm = $("#search-form");
+
+    {% comment %} When the categories dropdown changes, switch to the selected category {% endcomment %}
+    categoryDropdownList.on("change", function() {
+      searchForm.submit();
+    });
+  });
+</script>

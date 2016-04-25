@@ -1,0 +1,3301 @@
+//* =============================================================================
+//   Default Colours
+//   ========================================================================== */
+
+// Primary colours
+$red: #cb2c30;
+$blue: #4cb4e7;
+
+// Shades
+$white: white;
+$off-white: #dad9d6;
+$light-grey: #adaeb0;
+$grey: #686869;
+$dark-grey:#4c4845;
+$black: #222223;
+
+// Colour variables - Useful for changing the entire colour scheme
+$background: $white;
+$dark-background: $off-white;
+$text: $black;
+$mid-text: $grey;
+$light-text: $light-grey;
+$accent: $red;
+// FONTS
+
+// BLOKK Face for wireframing
+@font-face {
+  font-family: 'BLOKKNeue';
+  src: url('../fonts/BLOKKNeue-Regular.eot');
+  src: url('../fonts/BLOKKNeue-Regular.eot?#iefix') format('embedded-opentype'),
+   url('../fonts/BLOKKNeue-Regular.woff') format('woff'),
+   url('../fonts/BLOKKNeue-Regular.svg#BLOKKNeue-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+// VARIABLES
+//
+// Set most of your project settings here. Color variables can be found in _colors.scss
+
+
+///* =============================================================================
+//   Base sizing
+//   ========================================================================== */
+$base: 16; // Set the html base font size (in px). We recommend keep this at 16.
+$line: 24; // Set the baseline grid (in px) Also determines gutter width.
+
+
+///* =============================================================================
+//   Borders
+//   ========================================================================== */
+
+$rule: 1px solid $light-text;
+$hairline: 1px solid $dark-background;
+$accentline: 1px solid $accent;
+$lightline: 1px solid $background;
+$whiteline: 1px solid white;
+$blackline: 1px solid black;
+
+// Default border radius
+$radius: 3px;
+
+
+///* =============================================================================
+//   Font Stacks
+//   ========================================================================== */
+
+$serif: Georgia, serif;
+$sans: sans-serif;
+$mono: monospace;
+
+
+///* =============================================================================
+//   Paragraph defaults
+//   ========================================================================== */
+
+// Set to true to indicate parahgraph breaks with indents instead of line-breaks
+$indented-paragraphs: false;
+
+// FONT WEIGHTS
+$thin: 100;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+$extrabold: 800;
+$heavy: 900;
+
+
+///* =============================================================================
+//   Breakpoints
+//   ========================================================================== */
+
+// Adjust according to content not device.
+
+$screenXSmall: 28em !default;
+$screenSmall: 48em !default;
+$screenSmallMedium:54em !default;
+$screenMedium: 64em !default;
+$screenLarge: 98em !default;
+$screenXlarge: 110em !default;
+
+$tiny: "only screen and (min-width : #{$screenXSmall})";
+$small: "only screen and (min-width : #{$screenSmall})";
+$smallMedium: "only screen and (min-width : #{$screenSmallMedium})";
+$medium: "only screen and (min-width : #{$screenMedium})";
+$large: "only screen and (min-width : #{$screenLarge})";
+$xlarge: "only screen and (min-width : #{$screenXlarge})";
+
+// EG:
+// @media #{$small} {
+//   background: red;
+// }
+
+///* =============================================================================
+//   Grid
+//   ========================================================================== */
+
+// USAGE
+// width: $c6*3; // This is 3 units of a 6 unit grid wide
+// margin-left: $c4*2; // This pushes the element 2 units (of a 4 element grid) to the left
+//
+// Have fun. Make as many as you like. Simple.
+
+
+// Primary Grid
+//=============\\
+//Two Column Grid
+$c2: 100% / 2;
+//Three Column Grid
+$c3: 100% / 3;
+//Four Column Grid
+$c4: 100% / 4;
+// Five Columns
+$c5: 100% / 5;
+//Six Column Grid
+$c6: 100% / 6;
+//Seven Column Grid
+$c7: 100% / 7;
+//Eight Column Grid
+$c8: 100% / 8;
+//Nine Column Grid
+$c9: 100% / 9;
+//Ten Column Grid
+$c10: 100% / 10;
+//Twelve Column Grid
+$c12: 100% / 12;
+//Sixteen Column Grid
+$c16: 100% / 16;
+
+// Set the page margins
+// We like to make this equivalent to a column size. In this case, we're making
+// the margins the same width as unit in a 16 column grid (100/18 = 1 + 16 + 1).
+$margin: 100% / 18;
+
+
+///* =============================================================================
+//   Brand colors
+//   ========================================================================== */
+// We've included some branding colors for easy reference.
+
+$adn: #4A484C;
+$android: #80BD01;
+$apple: #777777;
+$bitbucket: #205081;
+$bitcoin: #F7931A;
+$css3: #1572B7;
+$dribbble: #EA4C89;
+$dropbox: #1081DE;
+$facebook: #3B579D;
+$flickr: #FF1981;
+$foursquare: #38AAE1;
+$github: #333333;
+$gittip: #663300;
+$googleplus: #DD4B39;
+$html5: #E54D26;
+$instagram: #427096;
+$linkedin: #1B86BC;
+$linux: #000000;
+$maxcdn: #FE8424;
+$pagelines: #2CA6FE;
+$pinterest: #CB2027;
+$renren: #005CAC;
+$skype: #00AFF0;
+$stackexchange: #195398;
+$stackoverflow: #FE7A15;
+$trello: #2A79A6;
+$tumblr: #304E6A;
+$twitter: #00ACED;
+$vimeo: #20B9EB;
+$vk: #54769A;
+$weibo: #EB182C;
+$windows: #6DC2E9;
+$xing: #006464;
+$youtube: #CC181E;
+
+// FUNCTIONS
+
+// This strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+
+// A handy Rem converting function modified from Foundation 5 http://foundation.zurb.com is the basis of all our units.
+// Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported
+// rem(10 20 30px 40);
+// Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
+// rem((10, 20, 30, 40px));
+// Optionally call with a different base (eg: 8px) to calculate rem.
+// rem(16px 32px 48px, 8px);
+// If you require to comma separate your list
+// rem((16px, 32px, 48), 8px);
+
+@function convert-to-rem($value, $base-value: 16)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+  @return $value;
+}
+
+@function rem($values, $base-value: $base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+
+// Color palette
+// Usage:
+//
+// background: c(blue, 80); // #1D3649
+// background: c(blue);     // #4178BE
+
+
+@function c($palette, $tone: 'core') {
+  @return map-get(map-get($palettes, $palette), $tone);
+}
+//MIXINS
+
+// Rem calculator for font sizes and line heights
+@mixin font-size($px_value: $base, $baseline: $line) {
+  $baseline_rem: 16;
+  font-size: ($px_value / $baseline_rem) * 1rem;
+  line-height: ($baseline / $px_value);
+}
+
+// Adjust Placeholder colors
+@mixin placeholder-color($color) {
+  &::-webkit-input-placeholder { /* Safari, Chrome */
+    color: $color;
+  }
+  &:-moz-placeholder { /* Firefox 4–18 */
+    color: $color;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: $color;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: $color;
+  }
+}
+
+//Style Placeholders
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}
+
+// Adjust selected text colors
+@mixin selected($txt, $bg) {
+  ::-moz-selection { background: $bg; color: $txt;}
+  ::selection { background: $bg; color: $txt;}
+}
+
+// Supply @2x background images to browsers that support background-size
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+// Adjust antialiasing for better light-text on dark-background rendering
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+// CSS Triangles
+@mixin cssTriangle($triangleSize, $triangleColor, $triangleDirection) {
+  @include rem(border-width,$triangleSize);
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if ($triangleDirection == top) {
+    border-color: $triangleColor transparent transparent transparent;
+  }
+  @if ($triangleDirection == bottom) {
+    border-color: transparent transparent $triangleColor transparent;
+  }
+  @if ($triangleDirection == left) {
+    border-color: transparent transparent transparent $triangleColor;
+  }
+  @if ($triangleDirection == right) {
+    border-color: transparent $triangleColor transparent transparent;
+  }
+  // .example { @include css-triangle(5px, #fff, bottom); }
+}
+
+
+// Apply gutters to layout elements
+@mixin gutter {
+  padding-left:rem($line/2);
+  padding-right:rem($line/2);
+}
+
+
+// From Inuit CSS http://inuitcss.com
+// Force overly long spans of text to truncate, e.g.:
+// `@include truncate(100%);`
+//
+// Where `$truncation-boundary` is a united measurement.
+@mixin truncate($truncation-boundary){
+  max-width:$truncation-boundary;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+// Helpful placeholder selectors give us easy access to some nice helpers without fill our code with classes.
+// Effortlessly vertically align objects
+// Contain floats: nicolasgallagher.com/micro-clearfix-hack/
+.group,
+.clearfix,
+%clearfix,
+%group {
+  zoom:1;
+
+  &:before,
+  &:after{
+    content:" ";
+    display:table;
+  }
+
+  &:after{
+    clear:both;
+  }
+}
+
+
+.vertical-align,
+%vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// remove dumb margins from normalize
+body,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, code,
+dl, dd, ol, ul,
+form, fieldset, legend,
+figure,
+table, th, td, caption,
+hr {
+  margin:  0;
+  padding: 0;
+}
+
+// Give a help cursor to elements that give extra info on `:hover`.
+
+abbr[title],
+dfn[title] {
+  cursor: help;
+}
+
+// Remove underlines from potentially troublesome elements.
+
+u,
+ins {
+  text-decoration: none;
+}
+
+// All the things box-size: border-box.
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+//some basic typography
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  text-rendering: optimizeLegibility;
+}
+/*! normalize-opentype.css v0.2.4 | MIT License | kennethormandy.com/journal/normalize-opentype-css */
+
+/**
+ * 1. Inherit style issues with custom selections, per robsterlini.co.uk/journal/opentype-and-selection-dont-mix
+ * 2. Turn on kerning, standard ligatures, and proportional, oldstyle numerals
+ *    Turn off all other ligatures, tabular, lining numerals, and alternates
+      Uses same settings for tables
+ * 3. Hard-codes fallback text selection for issue #18, color is Chrome’s per via http://stackoverflow.com/a/16094931/864799
+ */
+
+::selection {
+  color: inherit; /* 1. */
+  text-shadow: inherit; /* 2. */
+  background-color: #ACCEF7; /* 3. */
+}
+
+html,
+body,
+table {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0; /* 2. */
+}
+
+/* Headings
+========================================================================== */
+
+/**
+ * 1. Turn on discretionary ligatures for larger headings
+ */
+
+h1,
+h2,
+h3 {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1; /* 1. */
+}
+
+/* Text-level semantics
+========================================================================== */
+
+/**
+ * 1. Change all letters to uppercase
+ * 2. Turn on small caps for upper and lowercase letters
+ */
+
+abbr {
+  text-transform: uppercase; /* 1 */
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1; /* 2 */
+}
+
+/*
+ * TODO: Turn on diagonal fractions where appropriate
+ */
+
+time {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0;
+}
+
+/*
+ * 1. Turn off kerning and ligatures,
+ *    Turn on lining, tabular numerals, slashed zero
+ */
+
+pre,
+kbd,
+samp,
+code {
+  font-feature-settings: "kern" 0, "liga" 0, "calt" 1, "dlig" 0, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1; /* 1. */
+}
+
+mark {
+}
+
+small {
+}
+
+cite {
+}
+
+/**
+ * 1. Turn on proper supercript numerals
+ */
+
+sup {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "sups" 1; /* 1. */
+}
+
+/**
+ * 1. Turn on proper subscript numerals
+ */
+
+sub {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "subs" 1; /* 1. */
+}
+
+
+/* Grouping content
+========================================================================== */
+
+figcaption {
+}
+
+blockquote,
+q {
+}
+
+/**
+ * TODO: Adds proper bullets
+ */
+
+ul {
+}
+
+/*
+ * TODO:
+ * 1. Adds counters for lists
+ * 2. Use proper numerals for lists
+ */
+
+ol {
+}
+
+/**
+ * Adds proper small caps
+ */
+
+dl,
+dd,
+dl,
+dt,
+dfn {
+}
+
+/**
+ * TODO: scmp, sc2c, pnum, case sensitive forms for postal codes
+ */
+
+address {
+}
+
+
+/* Forms
+========================================================================== */
+
+/**
+ * 1. Turns on lining, proportional numerals without clarified zeroes
+ * TODO: Additional input modes https://developer.mozilla.org/en/docs/Web/HTML/Element/Input#attr-inputmode
+ */
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="number"],
+input[type="range"],
+input[type="tel"],
+input[type="week"] {
+  font-feature-settings: "kern" 0, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 0, "lnum" 1, "zero" 0; /* 1. */
+}
+
+/* Localisation
+========================================================================== */
+
+// /**
+//  * According to Wikipedia: http://en.wikipedia.org/wiki/Non-English_usage_of_quotation_marks
+//  * This is built on prior knowledge, which I would like to find and cite
+//  */
+//
+// :lang(cy) q {
+//   quotes: '\2018' '\2019' '\201C' '\201D' '\2018' '\2019' '\201C' '\201D';
+//   /*         ‘       ’       “       ”       ‘       ’       “       ”  */
+// }
+//
+// :lang(af) q,
+// :lang(zh) q,
+// :lang(en) q,
+// :lang(en-us) q,
+// :lang(eo) q,
+// :lang(id) q,
+// :lang(ga) q,
+// :lang(ko) q,
+// :lang(pt-br) q,
+// :lang(th) q,
+// :lang(tr) q {
+//   quotes: '\201C' '\201D' '\2018' '\2019' '\201C' '\201D' '\2018' '\2019';
+//   /*         “       ”       ‘       ’       “       ”       ‘       ’  */
+// }
+//
+// :lang(sq) q,
+// :lang(bs) q {
+//   quotes: '\201E' '\201C' '\2018' '\2019' '\201E' '\201C' '\2018' '\2019';
+//   /*         „       “       ‘       ’       „       “       ‘       ’  */
+// }
+//
+// :lang(ar) q {
+//   quotes: '\201D' '\201C';
+//   /*         ”       “  */
+// }
+//
+// :lang(cs) q,
+// :lang(de) q,
+// :lang(sk) q,
+// :lang(sl) q,
+// :lang(sb) q,
+// :lang(is) q {
+//   quotes: '\201E' '\201C' '\201A' '\2018' '\201E' '\201C' '\201A' '\2018';
+//   /*         „       “       ‚       ‘       „       “       ‚       ‘  */
+// }
+//
+// q:before {
+//   content: open-quote;
+// }
+//
+// q:after {
+//   content: close-quote;
+// }
+
+
+/* Tables
+========================================================================== */
+
+/**
+ * 1. Turns on tabular, lining numerals and slashed zero
+ */
+
+tbody,
+caption {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1; /* 1. */
+}
+
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  box-sizing: content-box; /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+address {
+    
+}
+//BUTTONS
+
+// A collection of button styles for buttons elements, button inputs, and button links.
+//
+// Start with a .button class and add modifiers classes to er, modify them.
+//
+// Example:
+// <a href="#" class="button button--large">Large Button text</a>
+
+
+// Default button styles
+button,
+input[type="submit"],
+.button,
+a.button {
+  position:relative;
+  display:inline-block;
+  padding:rem($line/4 $line/2);
+  border:none;
+  border-radius: $radius;
+  outline:none;
+  text-align:center;
+  text-decoration: none;
+  cursor:pointer;
+  font-family: $sans;
+
+  &:link,
+  &:visited {
+
+  }
+
+  &:hover {
+
+  }
+
+  &:active,
+  &:focus {
+
+  }
+}
+// Default code block styling
+code,
+pre,
+kbd {
+  @extend .small;
+  font-family: $mono;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 4;
+  hyphens: none;
+}
+
+// Code blocks
+pre {
+  padding:rem($line);
+  margin-bottom: rem($line);
+  overflow: auto;
+  > code {
+    margin:0;
+  }
+}
+
+//Inline code
+:not(pre) > code,
+kbd {
+  padding:rem(3px 4px 1px 4px);
+  font-size: 1em;
+}
+.text-input,
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=search],
+input[type=number],
+input[type=date],
+input[type=time],
+input[type=file],
+textarea {
+  -webkit-appearance: none;
+  display:block;
+  width:100%;
+  outline:none;
+  border: $rule;
+  border-radius: $radius;
+  font-family:$sans;
+  padding: rem($line/2);
+
+  &:active,
+  &:focus {
+
+  }
+
+  &.error {
+
+  }
+}
+
+textarea {
+  min-height: rem($line*6);
+}
+
+
+input[type=checkbox],
+input[type=radio] {
+  margin-right: 0.5em;
+}
+
+select {
+
+}
+
+input[type=search],
+.search-input {
+  overflow:hidden;
+  box-sizing:border-box;
+
+  &:focus,
+  &:active {
+
+  }
+}
+// FORMS
+form {
+
+}
+
+// Let's remove some odd decisions from Normalize on fieldsets.
+fieldset {
+  @extend %group;
+  border:none;
+  display: block;
+}
+
+legend {
+  @extend %group;
+}
+// HEADINGS
+//
+// Modular scales are your friend, my friend. Use them to set your heading sizes:
+// http://modularscale.com  |  https://vimeo.com/17079380
+
+
+h1,
+.h1 {
+  
+  font-family: $sans;
+
+  // Use for header sub-elements
+  span,
+  small {
+    font-size: 0.5em;
+  }
+}
+h2,
+.h2 {
+  font-family: $sans;
+
+  span,
+  small {
+    font-size: 0.5em;
+  }
+
+}
+h3,
+.h3 {
+  font-family: $sans;
+
+  span,
+  small {
+    font-size: 0.5em;
+  }
+}
+h4,
+.h4 {
+  font-family: $sans;
+}
+h5,
+.h5 {
+  font-family: $sans;
+}
+h6,
+.h6 {
+  font-family: $sans;
+}
+// IMAGES
+//
+// Let's make our images responsive. We wrap our images, maps, and videos in <figure> tags.
+// It makes semantic sense, and gives us a flexible container.
+//
+// Example:
+// <figure>
+//      <img src="cool-thing.jpg" alt="Cool thing" />
+//      <figcaption>Cool thing caption.
+//          <footer class="source">Photograph by <a href="#">Rad Person</a> at <cite><a href="#">NY Times</a></cite></footer>
+//      </figcaption>
+// </figure>
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+picture,
+figure {
+  position:relative;
+
+  > svg,
+  > img,
+  > iframe {
+    display: block;
+  }
+}
+figcaption {
+
+}
+
+//Fix SVG proportions in IE
+img[src*=svg],
+svg {
+  max-height: 100%;
+  max-width:100%;
+  width:100%;
+}
+img[src*=svg] { width/*\**/: 100%\9;}
+
+@media screen and (min-width:0\0) {
+  img[src*=".svg"] {
+    width: 100% !important;
+  }
+  svg,
+  svg path {
+    width:100% !important;
+  }
+}
+label,
+.label {
+
+}
+// LINKS
+
+a {
+
+  &:link,
+  &:visited {
+
+  }
+  &:hover,
+  &:active,
+  &:focus {
+
+  }
+}
+
+
+sup,
+sub {
+  a {
+    text-decoration: none;
+  }
+}
+// LISTS
+
+ul,
+ol,
+dl {
+  margin-bottom:rem($line/2);
+
+  ul,
+  ol {
+    padding-left: rem($line);
+  }
+}
+
+dt {
+  font-weight: $bold;
+}
+dd {
+  margin-bottom:rem($line/2);
+}
+nav {
+  ul {
+    list-style: none;
+  }
+}
+html,
+body {
+  position: relative;
+}
+
+html {
+  min-height: 100%;
+  overflow-y: scroll;
+  font-family: $serif;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  @include font-size; 
+}
+
+@media only screen and (min-width: $screenMedium) {
+  html {
+    font-size: 107.5%; // You can proportionally resize your entire layout with this line if you stick to rem units everywhere.
+  }
+}
+
+// QUOTES
+
+//Inline Quotes
+q{
+  quotes:"‘" "’" "“" "”";
+
+  &:before{
+    content:"‘";
+  }
+  &:after{
+    content:"’";
+  }
+
+  q:before{
+    content:"“";
+  }
+  q:after{
+    content:"”";
+  }
+}
+
+//Blockquotes
+blockquote {
+  quotes:"“" "”";
+  text-indent: -0.5em;
+
+  p {
+
+  }
+
+  p:before{
+    content:"“";
+  }
+  p:after{
+    content:"";
+  }
+  p:last-of-type:after{
+    content:"”";
+  }
+
+  q:before{
+    content:"‘";
+  }
+  q:after{
+    content:"’";
+  }
+
+}
+cite {
+
+}
+hr {
+  clear:both;
+  height: 0;
+  margin-top: rem($line);
+  margin-bottom: rem($line);
+  border: 0;
+  border-top: $rule;
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+
+  ul,
+  ol,
+  dl,
+  p {
+    margin-bottom: 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+th,
+td {
+  text-align: left;
+  vertical-align:top;
+}
+
+
+
+// Cell alignments
+
+[colspan]{
+  text-align: center;
+}
+[colspan="1"]{
+  text-align: left;
+}
+[rowspan]{
+  vertical-align: middle;
+}
+[rowspan="1"]{
+  vertical-align: top;
+}
+// PARAGRAPHs
+//
+// Modular scales are your friend, my friend:
+// http://modularscale.com  |  https://vimeo.com/17079380
+
+p {
+  margin-bottom:rem($line/2);
+}
+
+b,
+strong {
+  font-weight: $bold;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+abbr {
+  cursor: help;
+}
+
+sup {
+  height: 0;
+  line-height: 1;
+  vertical-align: baseline;
+  position: relative;
+  bottom: .5ex;
+}
+
+sub {
+  height: 0;
+  line-height: 1;
+  vertical-align: baseline;
+  position: relative;
+  bottom: -.5ex;
+}
+
+small,
+.small {
+  @include font-size(14, 24);
+}
+
+
+time {
+    
+}
+//BUTTONS
+
+// A collection of button styles for buttons elements, button inputs, and button links.
+//
+// Start with a .button class and add modifiers classes to er, modify them.
+//
+// Example:
+// <a href="#" class="button button--large">Large Button text</a>
+
+
+
+// Large buttons
+a.button--large,
+.button--large {
+  font-size:1.5em;
+}
+
+// Small buttons
+a.button--small,
+.button--small {
+  font-size:0.75em;
+}
+
+//Button groups
+.button-group {
+  @extend %group;
+
+  // Organize button groups for mobile screens first (we like to stack 'em).
+  .button,
+  a.button,
+  button {
+    display:block;
+    margin:0;
+    border-radius: 0;
+  }
+
+  .button:first-child,
+  a.button:first-child,
+  button:first-child {
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+  }
+
+  .button:last-child,
+  a.button:last-child,
+  button:last-child {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
+
+  // Reorganize for wider canvases (like a fancy pill-style nav).
+  @media only screen and (min-width: $screenSmall) {
+    .button,
+    a.button,
+    button {
+      float:left;
+    }
+
+    .button:first-child,
+    a.button:first-child,
+    button:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+    }
+
+    .button:last-child,
+    a.button:last-child,
+    button:last-child {
+      border-bottom-right-radius: $radius;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: $radius;
+    }
+  }
+}
+
+// FIELDS
+//
+// Let's wrap our fields in a field class for easier manipulation.
+//
+// Example:
+// <div class="field">
+//  <label for="field-name">Field name <sup>*<sup></label>
+//  <input type="text" name="field-name" id="field-name" class="text-input" required />
+// </div>
+
+.field {
+  @extend %group;
+  position: relative;
+  padding-bottom: rem($line);
+}
+
+// Treat checkbox fields slightly different
+.field--check {
+  label {
+    @extend %group;
+  }
+}
+
+// Labels in check-lists
+.check-label,
+.field--check label,
+.field--check .label{
+  display:inline-block;
+}
+.check-list {
+  list-style: none;
+
+  label {
+    cursor: pointer;
+  }
+}
+
+// Modified fields
+.text-input--small {
+
+}
+.text-input--large {
+
+}
+
+
+// Not all fields need to be full width. Here are some field building blocks
+// We're kicking these in at a wider screen, but you can make some for mobile.
+// If you dare.
+@media only screen and (min-width: $screenSmall) {
+  .field--half,
+  .field--third,
+  .field--two-third {
+    float:left;
+    padding:0;
+  }
+  .field--half {
+    width:$c4*2;
+  }
+  .field--third {
+    width:$c3;
+  }
+  .field--two-third {
+    width:$c3*2;
+  }
+}
+
+// Inline forms are good for embedding fields in text. Hat tip to Inuit. http://inuitcss.com/
+//
+// <div class="form--inline">
+//  <p>Yo Jeeves, the <label for="name">name</label> is
+//      <input type="text" class="text-input" id="name" />. My
+//      <label for="drink">drink of choice</label> is
+//      <select id="drink">
+//              <option>Bourbon</option>
+//          <option>Vodka</option>
+//          <option>Gin</option>
+//      </select>.</p>
+// </div>
+
+.form--inline {
+  label {
+    display:inline-block;
+    font:inherit;
+  }
+}
+// Add some error styling.
+// Keeping the labels absolutely positioned prevents them from altering the layout when visible.
+.label--error {
+  position:absolute;
+  left:0;
+  bottom:0;
+}
+
+// OPTION BUTTONS
+//
+// Add some style to those checkboxes and radios by making them look more like a set of buttons. Just switch the fieldtype to your preferred behavior.
+// Requires a small javascript snippet to add and remove the .checked class to the labels.
+//
+// Checkbox Example:
+// <div class="field option-buttons js-options">
+//    <label for="cb1"><input type="checkbox" name="check-button" value="1" id="cb1" />Item 1</label>
+//    <label for="cb2"><input type="checkbox" name="check-button" value="2" id="cb2" />Item 2</label>
+//    <label for="cb3"><input type="checkbox" name="check-button" value="3" id="cb3" />Item 3</label>
+// </div>
+//
+// Radio Example:
+// <div class="field option-buttons js-options">
+//    <label for="rb1"><input type="radio" name="radio-button" value="1" id="rb1" />Item 1</label>
+//    <label for="rb2"><input type="radio" name="radio-button" value="2" id="rb2" />Item 2</label>
+//    <label for="rb3"><input type="radio" name="radio-button" value="3" id="rb3" />Item 3</label>
+// </div>
+
+.option-buttons,
+.pill-buttons {
+  label {
+    @extend .button;
+    transition: all 0.1s linear;
+    position:relative;
+    display: block;
+    float:left;
+    padding:rem($line/4);
+    margin-right: 1px;
+    text-align: center;
+  }
+  input {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 3;
+    opacity:0;
+    width:100%;
+    height:100%;
+    cursor: pointer;
+    -moz-appearance: none;
+  }
+  span {
+    display:block;
+    margin-left: auto;
+    margin-right:auto;
+  }
+}
+.option-buttons {
+  label {
+    margin-right: rem($line/4);
+  }
+}
+
+// Stick pill buttons together
+.pill-buttons  {
+  @extend .button-group;
+
+  label {
+    border-radius:0;
+
+    &:first-child {
+      border-bottom-left-radius: $radius;
+      border-top-left-radius: $radius;
+    }
+    &:last-child {
+      border-bottom-right-radius: $radius;
+      border-top-right-radius: $radius;
+    }
+  }
+}
+// SWITCHES
+//
+// A fancy way to show a simple two-option radio field.
+// No JavaScript, but does require box-shadows and transitions out of the box.
+//
+// Example:
+// <div class="field switch">
+//   <input id="x" name="switch-x" type="radio" checked>
+//   <label for="x" onclick="">Off</label>
+//   <input id="y" name="switch-x" type="radio">
+//   <label for="y" onclick="">On</label>
+//   <span></span>
+// </div>
+
+.switch {
+  @extend %group;
+  transition: all 0.2s linear;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  height:rem($line*1.5);
+  padding: 0;
+  margin-bottom: rem($line/4);
+  line-height: 2.5;
+  font-family: $sans;
+  border-radius: $radius;
+
+  label {
+    transition: opacity 0.3s linear;
+    position: relative;
+    left: 0;
+    height: 100%;
+    margin:0;
+    float: left;
+    z-index: 2;
+    text-align: left;
+
+    &:first-of-type {
+      padding:rem(0 $line/1.5 0 $line/1.5);
+    }
+    &:last-of-type {
+      padding:rem(0 $line/1.5 0 0);
+    }
+  }
+
+  input {
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    width: 100%;
+    height:100%;
+    cursor: pointer;
+    -moz-appearance: none;
+
+    &:first-of-type:checked ~ span:last-child {
+      left: 100%;
+      margin-left: rem($line*-1.5 + 1px);
+    }
+  }
+
+  span:last-child {
+    transition: all 0.2s linear;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: rem($line*1.5);
+    height: rem($line*1.5);
+    padding: 0;
+    z-index: 1;
+    border-width: rem(1px);
+    border-style: solid;
+    border-radius: $radius;
+    cursor: pointer;
+  }
+
+  input:not(:checked) + label { opacity: 0; }
+
+  input:checked { display: none !important; }
+  input { left: 0; display: block !important; }
+
+  // Left Label alignment and position changes, including fixes for while inside a custom form
+  input:first-of-type + label,
+  input:first-of-type + span + label { left: -50%; }
+  input:first-of-type:checked + label,
+  input:first-of-type:checked + span + label { left: 0%; }
+
+  // Right Label alignment and position changes, including fixes for while inside a custom form
+  input:last-of-type + label,
+  input:last-of-type + span + label {right: -50%; left: auto; text-align: right; }
+  input:last-of-type:checked + label,
+  input:last-of-type:checked + span + label { right: 0%; left: auto; }
+}
+// CALLOUTS
+//
+// Good for visually sepearating related content. Let's make 'em flexible.
+//
+// Example:
+// <aside class="callout">
+//  <div class="content"> <!-- <<< Apply background styles to this element. -->
+//    <h2>Content Callout</h2>
+//    <p>Callout content</p>
+//  </div>
+// </aside>
+
+// .callout acts as a fluid container with padding so side by side callouts can still have a gutter separating them
+.callout {
+  @extend %group;
+  margin-bottom:rem($line);
+
+  //Remove margins from figure if it's outside of the .content area. Locks image and content together.
+  > figure {
+    margin:0;
+  }
+
+  // .content is where visual styles, like backgrounds and rounded corners should be applied
+  .content {
+    @extend %group;
+    padding:rem($line);
+
+    // Remove margins from the first and last elements in the callout to help maintain consistent padding around the inside the box
+    > *:last-child,
+    > *:last-child > *:last-child,
+    > *:last-child > *:last-child > *:last-child {
+      margin-bottom: 0 !important;
+    }
+    > *:first-child,
+    > *:first-child > *:first-child,
+    > *:first-child > *:first-child > *:first-child {
+      margin-top: 0 !important;
+    }
+  }
+}
+// KEYLINES, RULES, & DIVIDERS
+
+.rule--light {
+  border-top:$hairline;
+}
+.rule--red {
+  border-top:$accentline;
+}
+.rule--white {
+  border-top:$whiteline;
+}
+@media only screen and (min-width: $screenSmall) {
+  // Image position helpers. Let's kick 'em in at larger screen widths
+  .img--right{
+    margin-bottom: rem($line/2);
+    margin-left: rem($line/2);
+    float: right;
+  }
+  .img--left{
+    margin-bottom: rem($line/2);
+    margin-right: rem($line/2);
+    float: left;
+  }
+  .img--center{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: rem($line/2);
+  }
+
+  // Let's move those caption sources to the right at wider sizes
+    .source {
+      float:right;
+      text-align: right;
+    }
+  }
+// MAPS
+//
+// Let's use the same syntax as images, but add a .map class to apply the
+// following responsive styles.
+//
+// Example:
+// <figure class="map">
+//      <iframe Map embed code></iframe>
+// </figure>
+
+.map {
+  position:relative;
+  max-height:$line*6; // TIP: Keep your map content short on mobile so it doesn't hijack the scroll
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow:hidden;
+
+  object,
+  embed,
+  iframe {
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+  }
+}
+// Make maps fluid
+#googlemap img,
+object,
+embed,
+#map_canvas embed,
+#map_canvas img,
+#map_canvas object {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media only screen and (min-width: $screenSmall) {
+  .map {
+    max-height:auto;
+  }
+}
+// VIDEOS
+//
+// Let's use the same syntax as images, but add a .video class so fitvids.js
+// can make them responsive. Use this file to style custom controls.
+//
+// Example:
+// <figure class="video">
+//      <iframe Some cool video's embed code></iframe>
+//      <figcaption>Cool thing caption.
+//          <footer class="source">Photograph by <a href="#">Rad Person</a> at <cite><a href="#">NY Times</a></cite></footer>
+//      </figcaption>
+// </figure>
+
+.video {
+
+}
+// BREADCRUMBS
+//
+// Example:
+// <nav class="breadcrumbs row">
+//   <div class="container">
+//     <p><a href="/">Home</a> / <a href="">Parent page</a> / <span class="active">Current page</span></p>
+//   </div>
+// </nav>
+
+.breadcrumbs {
+  padding-top: rem($line/2);
+  margin-bottom: rem($line);
+}
+// HORIZONTAL NAVIGATION
+//
+// Example:
+// <nav class="horizontal-nav">
+//   <ul>
+//    <li><a href="/page">Nav Item 1</a></li>
+//    <li><a href="/page">Nav Item 2</a></li>
+//    <li><a href="/page">Nav Item 3</a></li>
+//   </ul>
+// </nav>
+
+.horizontal-nav {
+  ul {
+    @extend %group;
+    padding:0;
+    margin-bottom: 0;
+  }
+  li {
+    display: block;
+  }
+  a {
+    display: block;
+    width:100%;
+    padding:rem($line/2) $margin;
+    font-family: $serif;
+    text-decoration: none;
+    font-family: $sans;
+  }
+}
+
+@media only screen and (min-width: $screenSmall) {
+  .horizontal-nav {
+    li {
+      display: inline-block;
+    }
+    a {
+      padding:rem($line/2);
+    }
+  }
+
+  // Add a 'horizontal-nav--center' class to the <nav> element to center it horizontally.
+  .horizontal-nav--center {
+    ul {
+      display: table;
+      margin: 0 auto;
+    }
+  }
+}
+// OFFCANVAS NAVIGATION/CONTENT
+//
+// Example:
+//
+// <!-- Add 'offcanvas--push' <body> to push the page content when open.
+//      Add 'offcanvas--squish' to squish the page content when open. -->
+// <body class="offcanvas--push">
+//
+//   <!-- Left example. Other options are offcanvas--top, offcanvas--right, offcanvas--bottom -->
+//   <nav class="offcanvas--left" id="offcanvas">
+//     <!-- Offcanvas content. -->
+//   </nav>
+//
+//   <!-- Other site content below -->
+//   <main role="main">
+//     <!-- Point the href to the id of the offcanvas area -->
+//     <div class="js-open-canvas"><a href="#offcanvas">Offcanvas toggle</a></div>
+//   </main>
+// </body>
+
+// Set the width of vertical offcanvas areas
+$offcanvas-width: rem($line*10);
+$offcanvas-out: all 500ms cubic-bezier(0.745, -0.190, 0.210, 1.310);
+// Set the height of horizontal offcanvas areas
+$offcanvas-height: rem($line*4);
+
+
+.offcanvas--top,
+.offcanvas--left,
+.offcanvas--bottom,
+.offcanvas--right {
+  position: fixed;
+  z-index: 1000;
+
+  a {
+    padding: rem($line);
+    display: block;
+    text-decoration: none;
+    font-family: $sans;
+  }
+
+  ul {
+    border-top:$blackline;
+
+    a {
+      padding: rem($line/2 $line);
+    }
+  }
+}
+
+// Transitions
+.offcanvas--top,
+.offcanvas--left,
+.offcanvas--bottom,
+.offcanvas--right,
+.offcanvas--push {
+  transition: $offcanvas-out;
+}
+
+// Vertical offcanvas 
+.offcanvas--right,
+.offcanvas--left {
+  overflow:auto;
+  width: $offcanvas-width;
+  height: 100%;
+
+  li {
+    display: block;
+  }
+}
+
+// Horizontal offcanvas
+.offcanvas--top,
+.offcanvas--bottom {
+  width: 100%;
+  height: $offcanvas-height;
+  left: 0;
+  overflow: hidden;
+
+  a {
+    float: left;
+  }
+}
+
+// Vertical menu that slides from the left or right: ;
+.offcanvas--left {
+  left: 0px;
+  border-right:$blackline;
+
+  &.offcanvas--open {
+    left: $offcanvas-width * -1;
+  }
+  a {
+
+    &:link,
+    &:visited {
+      background:transparent;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      background:$accent;
+      text-shadow:none;
+      color:$background;
+    }
+  }
+}
+
+.offcanvas--right {
+  right: $offcanvas-width * -1;
+
+  &.offcanvas--open {
+    right: 0px;
+  }
+}
+
+// Horizontal menu that slides from the top or bottom
+.offcanvas--top {
+  top: $offcanvas-height * -1;
+
+  &.offcanvas--open {
+    top: 0px;
+  }
+}
+.offcanvas--bottom {
+  bottom: $offcanvas-height * -1;
+
+  &.offcanvas--open {
+    bottom: 0px;
+  }
+}
+
+// Add this class to the body element to push it to the side when the menu opens
+.offcanvas--push {
+  overflow-x: hidden;
+  left: $offcanvas-width;
+
+
+  &.offcanvas--push-right {
+    left: $offcanvas-width * -1;
+  }
+
+  &.offcanvas--push-left {
+    left: 0;
+  }
+}
+
+// Squish the canvas instead of pushing it.
+.offcanvas--squish {
+  overflow-x: hidden;
+  left: $offcanvas-width;
+  transition: $offcanvas-out;
+
+  &.offcanvas--squish-right {
+    left: $offcanvas-width * -1;
+  }
+
+  &.offcanvas--squish-left {
+    left:0;
+  }
+
+  @media only screen and (min-width: $screenSmall) {
+    &.offcanvas--squish-right {
+      margin-right: $offcanvas-width;
+      left:auto;
+    }
+    &.offcanvas--squish-left {
+      margin-left: $offcanvas-width;
+      left: auto;
+    }
+  }
+}
+
+.trigger--guide {
+  position:fixed;
+  top:rem($line/2);
+  left:$offcanvas-width - rem(5);
+  background:$text;
+  z-index:1000;
+  padding:rem($line/4 $line/2 $line/4 $line/1.5);
+  text-align:center;
+  transition: $offcanvas-out;
+  border-bottom-right-radius:$radius;
+  border-top-right-radius:$radius;
+  cursor:pointer;
+
+  a {
+    background:none;
+  }
+
+  strong {
+    color:$background;
+  }
+
+  &.active {
+    left:rem(-5);
+
+    img {
+      transform:rotate(180deg);
+      animation: spin-left 300ms ease-out;
+    }
+  }
+
+
+  img {
+    display:block;
+    width:rem($line);
+    height:rem($line);
+    margin:0 auto;
+    transform:rotate(0deg);
+    margin-bottom:rem($line/4);
+    animation: spin-right 300ms ease-out;
+  }
+}
+
+@media only screen and (min-width: $screenSmall) {
+  .offcanvas--left {
+    left: $offcanvas-width * -1;
+
+
+    &.offcanvas--open {
+      left: 0px;
+    }
+  }
+  .offcanvas--squish {
+    left:0;
+    margin-left:0;
+
+    &.offcanvas--squish-left {
+      margin-left:$offcanvas-width;
+    }
+
+  }
+  .trigger--guide {
+    left: rem(-5);
+
+    strong {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    &.active {
+      left:$offcanvas-width - rem(5);
+      opacity:0.2;
+
+      &:hover {
+        opacity:1;
+      }
+    }
+  }
+}
+
+// PAGINATION
+//
+// Here are some starter pagination styles for navigating dynamic content.
+//
+// Example:
+//<nav class="pagination">
+//    <ul>
+//        <li><a href="#">&laquo;</a></li>
+//        <li class="current"><a href="#">1</a></li>
+//        <li><a href="#">2</a></li>
+//        <li><a href="#">3</a></li>
+//        <li>&hellip;</li>
+//        <li><a href="#">5</a></li>
+//        <li><a href="#">&raquo;</a></li>
+//    </ul>
+//</nav>
+//
+// Mini pagination example:
+//<nav class="pagination pagination--mini">
+//    <p><a href="" class="prev">&laquo;&nbsp;Prev</a> <a href="" class="next">Next&nbsp;&raquo;</a></p>
+//</nav>
+
+.pagination {
+  @extend %group;
+  margin-top: rem($line);
+
+  li {
+    display:block;
+    float:left;
+  }
+  a {
+    display:block;
+
+    &:link,
+    &:visited {
+
+    }
+
+    &:hover,
+    &:active {
+
+    }
+  }
+
+  .current a{
+    cursor: default;
+  }
+}
+
+.pagination--mini {
+  a {
+    display: block;
+    float:left;
+  }
+}
+// VERTICAL NAVIGATION
+//
+// Makes a simple vertical list of links for sub-navigation, category lists, etc.
+//
+// Example:
+// <nav class="vertical-nav">
+//   <ul>
+//    <li><a href="/page">Nav Item 1</a></li>
+//    <li><a href="/page">Nav Item 2</a></li>
+//    <li><a href="/page">Nav Item 3</a></li>
+//   </ul>
+// </nav>
+
+.vertical-nav {
+  @extend %group;
+  margin-left: 0;
+  margin-right: 0;
+
+  li {
+    position: relative;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    font-family: $sans;
+    padding:rem($line/4) 0;
+
+    &:link,
+    &:visited {
+
+    }
+    &:hover,
+    &:active,
+    &:focus {
+
+    }
+  }
+  .current {
+    a {
+      cursor: default;
+    }
+  }
+}
+// TABLES
+//
+// Pulled from the awesome Inuit.css  http://inuitcss.com/
+// We have a lot at our disposal for making very complex table constructs, e.g.:
+//
+//  <table class="table--bordered  table--striped  table--data">
+//      <colgroup>
+//          <col class=t10>
+//          <col class=t10>
+//          <col class=t10>
+//          <col>
+//      </colgroup>
+//      <thead>
+//          <tr>
+//              <th colspan=3>Foo</th>
+//              <th>Bar</th>
+//          </tr>
+//          <tr>
+//              <th>Lorem</th>
+//              <th>Ipsum</th>
+//              <th class=numerical>Dolor</th>
+//              <th>Sit</th>
+//          </tr>
+//      </thead>
+//      <tbody>
+//          <tr>
+//              <th rowspan=3>Sit</th>
+//              <td>Dolor</td>
+//              <td class=numerical>03.788</td>
+//              <td>Lorem</td>
+//          </tr>
+//          <tr>
+//              <td>Dolor</td>
+//              <td class=numerical>32.210</td>
+//              <td>Lorem</td>
+//          </tr>
+//          <tr>
+//              <td>Dolor</td>
+//              <td class=numerical>47.797</td>
+//              <td>Lorem</td>
+//          </tr>
+//          <tr>
+//              <th rowspan=2>Sit</th>
+//              <td>Dolor</td>
+//              <td class=numerical>09.640</td>
+//              <td>Lorem</td>
+//          </tr>
+//      </tbody>
+//  </table>
+
+
+// In the HTML above we see several `col` elements with classes whose numbers
+// represent a percentage width for that column. We leave one column free of a
+// class so that column can soak up the effects of any accidental breakage in
+// the table.
+
+.t1      {width: 1%}
+.t5      { width: 5% }
+.t10    { width:10% }
+.t12    { width:12.5% }     /* 1/8 */
+.t15    { width:15% }
+.t20    { width:20% }
+.t25    { width:25% }       /* 1/4 */
+.t30    { width:30% }
+.t33    { width:33.333% }   /* 1/3 */
+.t35    { width:35% }
+.t37    { width:37.5% }     /* 3/8 */
+.t40    { width:40% }
+.t45    { width:45% }
+.t50    { width:50% }       /* 1/2 */
+.t55    { width:55% }
+.t60    { width:60% }
+.t62    { width:62.5% }     /* 5/8 */
+.t65    { width:65% }
+.t66    { width:66.666% }   /* 2/3 */
+.t70    { width:70% }
+.t75    { width:75% }       /* 3/4*/
+.t80    { width:80% }
+.t85    { width:85% }
+.t87    { width:87.5% }     /* 7/8 */
+.t90    { width:90% }
+.t95    { width:95% }
+
+
+
+.numerical,
+.delete {
+  text-align: right;
+}
+
+
+// Responsive tables. Let's kick these in at smaller screens.
+// See a few other approaches here: http://css-tricks.com/responsive-data-tables/
+@media only screen and (max-width: $screenSmall) {
+
+  table,
+  tbody,
+  tfoot,
+  th,
+  td,
+  tr {
+    display: block !important;
+  }
+  thead {
+    display: none;
+  }
+  thead,
+  tfoot,
+  tbody,
+  tr {
+    clear:both;
+  }
+  tr {
+    width:100%;
+  }
+  .numerical,
+  .delete {
+    text-align: left;
+  }
+}
+
+
+//  Bordered tables
+.table--bordered{
+
+  th,
+  td{
+    border:$rule;
+
+    &:empty{
+      border:none;
+    }
+  }
+}
+
+// Lined tables
+.table--lined {
+  thead tr {
+    border-bottom: $rule;
+  }
+  tbody tr {
+    border-bottom: $hairline;
+  }
+}
+
+// VCARDS
+
+.vcard {
+  .type {
+      display:block;
+  }
+}
+.street-address,
+.country-name {
+    display:block;
+}
+
+// CODE
+//
+// We use Prism.js to add syntax highlighting and line numbers.
+// Visit http://prismjs.com/ to configure the languages and plugins you require.
+// Change the syntax colors in theme/code.scss
+
+.namespace {
+  opacity: .7;
+}
+.token.important {
+  font-weight: $bold;
+}
+.token.entity {
+  cursor: help;
+}
+
+// Add line numbers to <pre> blocks with a line-numbers class
+.line-numbers {
+  position: relative;
+  counter-reset: linenumber;
+}
+.line-numbers > code {
+  position: relative;
+}
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: rem($line*-1);
+  width: rem($line*2); /* works for line-numbers below 1000 lines */
+  border-right: $hairline;
+  user-select: none;
+}
+
+.line-numbers-rows > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  display: block;
+  padding-right: rem($line/2);
+  text-align: right;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  a {
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+
+    }
+    &:hover,
+    &:active,
+    &:focus {
+
+    }
+  }
+}
+
+.hgroup {
+  *:first-child {
+
+  }
+  > * {
+    margin:0;
+  }
+}
+.more {
+  a {
+
+    span {
+
+    }
+  }
+}
+.lead {
+  @include font-size(18, $line); // using the $line variable makes it easy to stick to a baseline grid.
+}
+
+// Fancy ampersands
+// Uncomment the script in /source/coffee/components/_typography.coffee to automate markup.
+// EG) <p>You <abbr class="amp">&amp;</abbr> I.</p>
+
+.amp {
+  font-style: italic;
+}
+
+.price {
+  &:first-letter {
+    height: 0;
+    line-height: 2;
+    vertical-align: top;
+    position: relative;
+    font-size: 0.6667em;
+  }
+}
+
+
+.micro {
+  @include font-size(13, $line);
+}
+.milli{
+  @include font-size(12, $line);
+}
+
+.content {
+  p {
+      hyphens: auto;
+  }
+  // Use indented paragraphs if variable in ~/settings/_variables.scss is set to true
+  @if $indented-paragraphs == true {
+    p:not(.lead) {
+      margin-bottom: 0;
+
+      &:not(.lead) + p {
+          text-indent: 1em;
+      }
+    }
+  }
+}
+.source {
+  span {
+
+  }
+}
+// ANIMATIONS
+//
+// We like to group animations and keyframes in one spot.
+
+// Adds a nice default transition for link and button hovers.
+a,
+button,
+input[type="submit"] {
+  transition: all 0.2s linear;
+}
+.content {
+  p {
+      hyphens: auto;
+  }
+  // Use indented paragraphs if variable in ~/settings/_variables.scss is set to true
+  @if $indented-paragraphs == true {
+    p:not(.lead) {
+      margin-bottom: 0;
+
+      &:not(.lead) + p {
+          text-indent: 1em;
+      }
+    }
+  }
+}
+// DRAWERS
+//
+// Hidden content that gets opened by clicking on a link with a class of .js-reveal.
+// Uses a small JavaScript snippet to pull the target from the href parameter.
+//
+// Example:
+// <p><a href="#drawer" class="button js-reveal">Open drawer</a></p>
+//
+// <section class="drawer" id="drawer"> <!-- Anything inside .drawer is hidden -->
+//   <section class="row content">
+//       <!-- Drawer contents -->
+//   </section>
+// </section>
+
+.drawer {
+  @extend %group;
+  overflow: hidden;
+  padding:0;
+  max-height:0; // We use max-height to control the opening because it can be animated with a transition.
+  transition: all 0.5s ease;
+
+  .content {
+
+    // Removes margins from first and last elements inside the drawer for more consistent padding.
+    > *:first-child,
+    > *:first-child > *:first-child,
+    > *:first-child > *:first-child > *:first-child {
+      margin-top: 0;
+    }
+    > *:last-child,
+    > *:last-child > *:last-child,
+    > *:last-child > *:last-child > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Open the drawer after the js adds an .opened class. You can make this as
+  // tall as you want as long as it exceeds the height of the drawer.
+  &.opened {
+    max-height:1000px;
+  }
+}
+// FOOTER
+
+.footer {
+  clear:both;
+}
+// HEADER
+
+.row--header {
+  padding-top: rem($line);
+  padding-bottom: 0;
+}
+
+.logo {
+  max-width: rem($line*10);
+  margin-top:rem($line);
+  margin-bottom:rem($line);
+  float:left;
+}
+// LAYOUT
+//
+// Setup your main layout blocks here. We've included a few examples, but
+// encourage you to create your own.
+//
+// Example:
+// <section class="row">
+//    <section class="primary-content">
+//        … Main page stuff …
+//    </section>
+//    <aside class="secondary-content">
+//        … Secondary content (sidebar perhaps?) …
+//     </aside>
+// </section>
+
+
+@media only screen and (min-width: $screenSmall) {
+  .primary-content {
+    width:$c5*3; // Creates an object that's 3/5 the width of its parent
+    float:left;  // Float this block to the left
+
+  }
+  .secondary-content {
+    width:$c5*2; // Creats an object that's 2/5 the width of its parent
+    float:right;
+  }
+  .split-content {
+    width:$c4*2; // Creates objects that are 1/2 the width of its parent
+    float:left;
+  }
+  .three-up {
+    width:$c3*1; // Creates objects that are 1/3 the width of its parent
+    float:left;
+  }
+}
+
+@media only screen and (min-width: $screenMedium) {
+
+}
+
+@media only screen and (min-width: $screenLarge) {
+  .primary-content {
+    width:$c7*4; // Change grid as you move up: Four units of a 7-column grid
+  }
+  .secondary-content {
+    width: $c3*1; // Uses a 1/3 unit-grid for a more complex compound grid https://gridsetapp.com/specs/gerstner/
+  }
+}
+@media only screen and (min-width: $screenXlarge) {
+
+}
+// BASE
+//
+// This page is for setting up our layout structure for the project.
+//
+// If you stick to rem units, you can resize the entire layout
+// proportionally by manipulating the font-size on the html element.
+// Hint: use the rem() function to convert px to rem units.
+//
+// .row classes separate page sections and establish the grid within those
+// sections. Add color classes from theme/_layout.scss to modify the background
+
+
+// Example:
+// <section class="row">
+//    <section class="primary-content">
+//        … Main page stuff …
+//    </section>
+//    <aside class="secondary-content">
+//        … Secondary content (sidebar perhaps?) …
+//     </aside>
+// </section>
+
+.row {
+  @extend %group; // Call in a clearfix style
+  position:relative;
+  padding: rem($line) $margin; //Creates margins around row content
+}
+
+// remove vertical padding on rows if row--tight class is present
+.row--tight {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+// Edge to edge containers on mobile
+.row--mobile-full {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media only screen and (min-width: $screenSmall) {
+  .row,
+  .row--mobile-full { // Bring edge-to-edge mobile views inline with the rest of the layout
+    padding: rem($line*2) $margin; // Increase vertical padding for more space
+
+    // Add gutters to a row's immediate children unless they have a .collapse class.
+    > *:not(.collapse) {
+      @include gutter;
+    }
+  }
+  // remove vertical padding on rows again
+  .row--tight {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: $screenMedium) {
+  .row {
+    padding-left:$margin*2;
+    padding-right:$margin*2;
+  }
+}
+
+@media only screen and (min-width: $screenLarge) {
+
+}
+@media only screen and (min-width: $screenXlarge) {
+
+}
+// Tabs
+//
+// Our tab implementation is pretty flexible.
+// If you follow this general pattern, you can place anything in the tab elements:
+//
+// Example:
+// <ul class="tabs">
+//  <li><a href="#tab1">Tab 1</a></li>
+//  <li><a href="#tab2">Tab 2</a></li>
+//  <li><a href="#tab3">Tab 3</a></li>
+// </ul>
+//
+// <div id="tab1">
+//   <!-- TAB 1 STUFF -->
+// </div>
+// <div id="tab2">
+//   <!-- TAB 2 STUFF -->
+// </div>
+// <div id="tab3">
+//   <!-- TAB 3 STUFF -->
+// </div>
+
+
+.tabs {
+  padding:0;
+  margin-bottom: 0;
+
+  li {
+    display: inline-block;
+    width:auto;
+  }
+  a {
+    @extend .button;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    display:block;
+    text-decoration: none;
+  }
+}
+.tab-content {
+  padding: rem($line/2);
+
+  // Remove margins from the first and last elements in the callout to help
+  // maintain consistent padding around the inside the box
+  > *:last-child,
+  > *:last-child > *:last-child,
+  > *:last-child > *:last-child > *:last-child {
+    margin-bottom: 0 !important;
+  }
+  > *:first-child,
+  > *:first-child > *:first-child,
+  > *:first-child > *:first-child > *:first-child {
+    margin-top: 0 !important;
+  }
+}
+// Disabled button and link styles
+.disabled,
+a.button--disabled,
+a.button--disabled:hover,
+a.button--disabled:active,
+a.button--disabled:focus,
+.button--disabled,
+.button--disabled:hover,
+.button--disabled:active,
+.button--disabled:focus {
+  cursor: default;
+  pointer-events: none;
+}
+// Hide for both screenreaders and browsers: http://css-discuss.incutio.com/wiki/Screenreader_Visibility
+.ir {
+  background-repeat: no-repeat;
+  direction: ltr;
+  display: block;
+  text-align: left;
+  text-indent: -999em;
+  overflow: hidden;
+
+  br {
+    display: none;
+  }
+}
+.hide  {
+  display: none;
+}
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+// Hide only visually, but have it available for screenreaders: by Jon Neal. http://www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  // Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638
+  &.focusable {
+    &:active,
+    &:focus {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      width: auto;
+    }
+  }
+}
+
+// Hide visually and from screenreaders, but maintain layout
+.invisible {
+  visibility: hidden;
+}
+
+.sm-show, .md-show, .lg-show {
+  display: none !important
+}
+
+@media #{$small} { 
+  .sm-show { display: block !important }
+}
+
+@media #{$medium} { 
+  .md-show { display: block !important }
+}
+
+@media #{$large} { 
+  .lg-show { display: block !important }
+}
+
+@media #{$small} {
+  .sm-hide { display: none !important }
+}
+
+@media #{$medium} {
+  .md-hide { display: none !important }
+}
+
+@media #{$large} {
+  .lg-hide { display: none !important }
+}
+// Floating
+.right{
+  float:right;
+}
+.left{
+  float:left;
+}
+.clear {
+  clear:both;
+}
+
+//Display 
+.inline {
+  display: inline;
+}
+.inline-block {
+  display:inline-block;
+}
+.block {
+  display: block;
+}
+.table {
+  display:table;
+}
+.table-cell {
+  display: table-cell;
+}
+
+//Overflow
+.overflow-hidden { 
+  overflow: hidden;
+}
+.overflow-scroll { 
+  overflow: scroll;
+}
+.overflow-auto   { 
+  overflow: auto;
+}
+
+//Vertical alignment
+.align-baseline { vertical-align: baseline }
+.align-top      { vertical-align: top }
+.align-middle   { vertical-align: middle }
+.align-bottom   { vertical-align: bottom }
+
+//Spacing
+
+.m0  { margin:        0 }
+.mt0 { margin-top:    0 }
+.mr0 { margin-right:  0 }
+.mb0 { margin-bottom: 0 }
+.ml0 { margin-left:   0 }
+.p0  { padding:       0 }
+.pt0 { padding-top:   0 }
+.pr0 { padding-right: 0 }
+.pb0 { padding-bottom:0 }
+.pl0 { padding-left:  0 }
+
+// Eg) .m1 { margin: rem($line) }
+//     .pt2 { padding-top: rem($line) }
+
+@for $i from 1 through 10 {
+  .m#{$i}  { margin:         #{rem($line) * $i}; }
+  .mt#{$i} { margin-top:     #{rem($line) * $i}; }
+  .mr#{$i} { margin-right:   #{rem($line) * $i}; }
+  .mb#{$i} { margin-bottom:  #{rem($line) * $i}; }
+  .ml#{$i} { margin-left:    #{rem($line) * $i}; }
+  .my#{$i} { margin-top:     #{rem($line) * $i}; margin-bottom: #{rem($line) * $i}; }
+  .mx#{$i} { margin-left:    #{rem($line) * $i}; margin-right:  #{rem($line) * $i}; }
+  .p#{$i}  { padding:        #{rem($line) * $i}; }
+  .pt#{$i} { padding-top:    #{rem($line) * $i}; }
+  .pr#{$i} { padding-right:  #{rem($line) * $i}; }
+  .pb#{$i} { padding-bottom: #{rem($line) * $i}; }
+  .pl#{$i} { padding-left:   #{rem($line) * $i}; }
+  .py#{$i} { padding-top:    #{rem($line) * $i}; padding-bottom: #{rem($line) * $i}; }
+  .px#{$i} { padding-left:   #{rem($line) * $i}; padding-right:  #{rem($line) * $i}; }
+  .z#{$i}  { z-index: #{$i} }
+}
+
+//Positioning
+.relative { position: relative }
+.absolute { position: absolute }
+.fixed    { position: fixed }
+
+.top-0    { top: 0 }
+.right-0  { right: 0 }
+.bottom-0 { bottom: 0 }
+.left-0   { left: 0 }
+
+//Flex
+.flex { display: flex }
+
+.flex-column  { flex-direction: column }
+.flex-wrap    { flex-wrap: wrap }
+
+.flex-center   { align-items: center }
+.flex-baseline { align-items: baseline }
+.flex-stretch  { align-items: stretch }
+.flex-start    { align-items: flex-start }
+.flex-end      { align-items: flex-end }
+
+.flex-justify  { justify-content: space-between }
+
+.flex-auto {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+.flex-grow { flex: 1 0 auto }
+.flex-none { flex: none }
+
+.flex-first { order: -1 }
+.flex-last  { order: 99999 }
+
+@media #{$small} { 
+  .sm-flex { display: flex }
+}
+@media #{$medium} { 
+  .md-flex { display: flex }
+}
+@media #{$large} { 
+  .lg-flex { display: flex }
+}
+
+// LIVE WIRES
+//
+// By default, these styles simply block out any text inside of a content l* element.
+// Add any of your own wireframe-specific styles here.
+
+// Block out all p,li,dd text inside of .content elements
+.content{
+  p,
+  li,
+  dd {
+    line-height: 1.25;
+    letter-spacing:-0.1em;
+    word-spacing: -0.9em;
+    font-family: "BLOKKNeue";
+    color: #BABAAE;
+
+    > * {
+      word-spacing: 0;
+      letter-spacing: 0;
+    }
+
+  }
+}
+
+// Force clear text
+.callout--clear .content,
+.content--clear {
+    p,
+    li,
+    dd {
+      line-height: 1.5;
+      letter-spacing:0;
+      word-spacing: 0;
+      font-family: inherit;
+      color: inherit;
+  }
+}
+
+
+// If you don't have content, shame on you.
+// Here's a little handy set of classes to help you anyway.
+// Just add a line class to your container and we'll fill it with the text placeholder image.
+//
+// eg) class="l5" would render 5 lines of text placeholder images
+@for $i from 1 through 100 {
+  .l#{$i} { height:$line* $i * 1px; background: url('../img/livewires/text.png'); }
+  .l#{$i} > p { visibility: hidden; }
+}
+
+
+
+// Text alignment
+.left-align   {
+  text-align: left;
+}
+.right-align  {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.justify {
+  text-align:justify;
+}
+.nowrap {
+  white-space: nowrap;
+}
+
+Font style
+.italic {
+  font-style:italic;
+}
+
+//Font weights
+.thin {
+  font-weight:$thin;
+}
+.light {
+  font-weight:$light;
+}
+.regular {
+  font-weight:$regular;
+}
+.medium {
+  font-weight:$medium;
+}
+.semibold {
+  font-weight:$semibold;
+}
+.bold {
+  font-weight:$bold;
+}
+.extrabold {
+  font-weight:$extrabold;
+}
+.heavy {
+  font-weight: $heavy;
+}

@@ -1,0 +1,30 @@
+{% comment %}
+  These are upsells that appear on the 'thankyou' page that is shown to a
+  buyer when a purchase has been completed.
+{% endcomment %}
+{% if page.has_related_products %}
+  <div class="container multi-products">
+    <div class="row">
+      <div class="col-sm-10 col-md-8  col-sm-offset-1 col-md-offset-2">
+        {% if page.has_related_products_label %}
+          <h3>
+            {{ page.related_products_label }}
+          </h3>
+        {% endif %}
+        {% for related_product in page.related_products %}
+          <div class="row multi-product__item">
+            <div class="col-sm-9 multi-product__description">
+              <div class="price">{{ related_product.display_price }}</div>
+              <div class="title">{{ related_product.product_name }}</div>
+            </div>
+            <div class="col-sm-3 multi-product__buy">
+              <a class="btn btn-primary btn-block multi-product__cta" href="{{ related_product.add_to_cart_url }}">
+                {{ related_product.button_text_without_price }}
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}

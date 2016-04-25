@@ -1,0 +1,34 @@
+{% comment %}
+  This is the edit course review page.
+  Here, a user can edit an existing course review.
+{% endcomment %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      {% if course_review.errors.any? %}
+        <div id="error_explanation">
+          <h2>
+            {% if page.form_error_count == 1 %}
+              {{ page.form_error_count }}
+              {{ 'liquid.views.edit_course_review_page.error.one' | translate }}
+              {{ 'liquid.views.edit_course_review_page.error_msg_save.one' | translate }}
+            {% else %}
+              {{ page.form_error_count }}
+              {{ 'liquid.views.edit_course_review_page.error.other' | translate }}
+              {{ 'liquid.views.edit_course_review_page.error_msg_save.other' | translate }}
+            {% endif %}
+          </h2>
+          <ul>
+            {% for error_message in page.form_error_messages %}
+              <li>{{ error_message }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      <h4>
+        {{ 'liquid.views.edit_course_review_page.custom_tell_us_what_you_thought_text' | translate }}
+      </h4>
+      {{ page.course_review_form }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{% comment %}
+  These are your custom links that appear on the right side of the header.
+  These links can be defined by clicking the "Custom Links" menu option on the
+  left hand side of the dashboard.
+{% endcomment %}
+{% if site.has_custom_right_links %}
+  {% for link in site.custom_right_links %}
+    <li class="header-nav__item">
+      <a href="{{ link.formatted_url }}" target="{{ link.target }}" class="header-nav__link">{{ link.formatted_text}}</a>
+    </li>
+  {% endfor %}
+{% endif %}

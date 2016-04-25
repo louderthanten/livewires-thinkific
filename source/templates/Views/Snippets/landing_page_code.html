@@ -1,0 +1,8 @@
+{% comment %}
+  Landing page code for either courses or bundles
+  This renders the unique code that you have defined for a
+  course or a bundle on its landing page.
+{% endcomment %}
+{% if page.has_landing_page_code %}
+  {{ page.landing_page_code }}
+{% endif %}

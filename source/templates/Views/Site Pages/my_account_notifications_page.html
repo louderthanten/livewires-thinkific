@@ -1,0 +1,15 @@
+{% comment %}
+  This is the 'my account notifications' page.
+  Here, a user can opt-in/out of notification emails.
+{% endcomment %}
+
+<div class="container student-profile" id="account">
+  <div class="row">
+    <div class="col-md-3">
+      {% include 'my_account_menu' %}
+    </div>
+    <div class="col-md-9">
+      {{ page.edit_notifications_form }}
+    </div>
+  </div>
+</div>

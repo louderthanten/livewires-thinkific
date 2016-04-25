@@ -1,0 +1,111 @@
+{% comment %}
+  This is the header of your site that has links.
+  It is used on all pages but the checkout currently.
+{% endcomment %}
+<header>
+  <div class="container">
+  
+
+    <div class="header-logo__container">
+      {% if site.has_logo %}
+        <a href="{{ site.home_url }}" class="header-logo">
+          <img src="{{ site.logo_url }}" class="header-logo__image">
+        </a>
+      {% else %}
+        <a href="{{ site.home_url }}" class="header-school-name">{{ site.name }}</a>
+      {% endif %}
+      <button class="header-nav__mobile-btn">
+        {{ 'liquid.partials.header_with_links.button_menu' | translate }}
+      </button>
+    </div>
+
+
+    <div class="header-nav__container">
+      <nav class="header-nav">
+        {% if site.current_user.signed_in %}
+          <ul class="header-nav__list header-nav__left">
+            <li class="header-nav__item">
+              <a href="{{ site.collections_url }}" class="header-nav__link">
+                {{ 'liquid.partials.header_with_links.link_all_courses' | translate }}
+              </a>
+            </li>
+            <li class="header-nav__item">
+              <a href="{{ site.student_dashboard_url }}" class="header-nav__link">
+                {{ 'liquid.partials.header_with_links.link_my_dashboard' | translate }}
+              </a>
+            </li>
+            {% include "header_left_menu" %}
+          </ul>
+
+          <ul class="header-nav__list header-nav__right">
+            {% include "header_right_menu" %}
+            {% include "header_user_menu" %}
+
+            <!-- Dropdown shows up on Desktop and UP to giant screens -->
+             <li class="dropdown header-nav__item">
+              <a class="dropdown-toggle" data-toggle="dropdown" id="my_account">
+                <span class="user-name">
+                  {{ site.current_user.first_name_last_initial }}
+                </span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="{{ site.current_user.account_url }}">
+                    {{ 'liquid.partials.header_with_links.link_my_account' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:{{ site.support_email }}" target="_blank">
+                    {{ 'liquid.partials.header_with_links.link_support' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ site.sign_out_url }}">
+                    {{ 'liquid.partials.header_with_links.link_sign_out' | translate }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- These show up only on Tablet and down -->
+            <li class="header-nav__item hidden-md hidden-lg">
+              <a href="{{ site.current_user.account_url }}" class="header-nav__link">
+                {{ 'liquid.partials.header_with_links.link_my_account' | translate }}
+              </a>
+            </li>
+            <li class="header-nav__item hidden-md hidden-lg">
+              <a href="mailto:{{ site.support_email }}" class="header-nav__link" target="_blank">
+                {{ 'liquid.partials.header_with_links.link_support' | translate }}
+              </a>
+            </li>
+            <li class="header-nav__item hidden-md hidden-lg">
+              <a href="{{ site.sign_out_url }}" class="header-nav__link">
+                {{ 'liquid.partials.header_with_links.link_sign_out' | translate }}
+              </a>
+            </li>
+          </ul>
+
+        {% else %}
+          <ul class="header-nav__list header-nav__left">
+            <li class="header-nav__item">
+              <a href="{{ site.collections_url }}" class="header-nav__link">
+                {{ 'liquid.partials.header_with_links.link_all_courses' | translate }}
+              </a>
+            </li>
+            {% include "header_left_menu" %}
+          </ul>
+
+          <ul class="header-nav__list header-nav__right">
+            {% include "header_right_menu" %}
+            <li class="header-nav__item sign-in">
+              <a href='{{ site.sign_in_url }}' class="my-account">
+                {{ 'liquid.partials.header_with_links.link_sign_in' | translate }}
+              </a>
+            </li>
+          </ul>
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+</header>

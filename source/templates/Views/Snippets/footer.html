@@ -1,0 +1,50 @@
+{% comment %}
+  This is the footer of your site and appears on all pages covered by the theme.
+{% endcomment %}
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="footer-nav">
+          <li class="footer-nav__item">
+            <a href="{{ site.home_url }}">
+              {{ 'liquid.partials.footer.link_home' | translate }}
+            </a>
+          </li>
+          <li class="footer-nav__item">
+            <a data-uv-trigger="true" href="mailto:{{ site.support_email }}">
+              {{ 'liquid.partials.footer.link_support' | translate }}
+            </a>
+          </li>
+          {% if site.has_terms %}
+            <li class="footer-nav__item">
+              <a href="{{ site.terms_url }}">
+                {{ 'liquid.partials.footer.link_terms' | translate }}
+              </a>
+            </li>
+          {% endif %}
+          {% if site.has_privacy_policy %}
+            <li class="footer-nav__item">
+              <a href="{{ site.privacy_policy_url }}">
+                {{ 'liquid.partials.footer.link_privacy_policy' | translate }}
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="footer-copyright">
+          {{ site.copyright }}
+        </div>
+        <br>
+        <a href="http://www.thinkific.com/?utm_source={{ site.subdomain }}&utm_medium=powered-by&utm_campaign=Referral"
+           target="_blank" class="footer-powered-by">
+          Powered By Thinkific
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

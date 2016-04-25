@@ -1,0 +1,42 @@
+{% comment %}
+  This is the sign in page.
+{% endcomment %}
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-10 col-md-6 col-sm-offset-1 col-md-offset-3'>
+
+        <div class='row'>
+          <div class='col-sm-12'>
+            <h4>
+              {{ 'liquid.views.sign_in_page.header_welcome_back' | translate }}
+            </h4>
+            {% if page.has_remote_signin %}
+                {% if page.has_linkedin_enabled %}
+                  <a href='{{ page.linkedin_oauth_url }}' class='btn linkedin-signin linkedin'>
+                    {{ 'liquid.views.sign_in_page.link_linkedin' | translate }}
+                  </a>
+                {% endif %}
+                {% if page.supports_remote_auth %}
+                  <a href='{{ tenant_oauth_url }}' class='btn btn-secondary'>
+                    {{ page.tenant_auth_text }}
+                  </a>
+                {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        
+        {{ page.sign_in_form }}
+
+        <div class='row'>
+          <div class='col-sm-12 text-center'>
+            <br>
+            <a href='{{ page.sign_up_url }}'>
+              {{ 'liquid.views.sign_in_page.link_create_account' | translate }}
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

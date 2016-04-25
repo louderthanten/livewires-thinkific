@@ -1,0 +1,19 @@
+{% comment %}
+  This is a paginated list of all the products (courses or bundles) in your site
+{% endcomment %}
+{% paginate page.product_cards by 6 %}
+  <div class="row">
+    {% for card in paginate.collection %}
+      {% if card.is_course %}
+        {% include 'course_card' with card %}
+      {% else %}
+        {% include 'bundle_card' with card %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% include 'pagination' with paginate %}
+    </div>
+  </div>
+{% endpaginate %}

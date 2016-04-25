@@ -1,0 +1,46 @@
+{% comment %}
+  This is the card representation (the square box that appears in your course catalog
+  for each bundle) of your bundle.
+{% endcomment %}
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+  <div class="{{ card.status }} course-card course-card--bundle" data-card-url="{{ card.landing_page_url }}">
+    <div class="course-card__img-container">
+      <img src="{{ card.image_url }}" alt="" class="course-card__img">
+    </div>
+    <div class="course-card__body">
+      <div class="row">
+        <div class="col-md-12">
+          {% if card.public %}
+            <div class="{{ card.price_css_class }}  course-card__price">
+              {{ card.display_price }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="course-card__title" title="{{card.name}}">
+            {{ card.name }}
+          </h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <p class="course-card__description" title="{{card.tagline}}">
+            {{ card.tagline }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="course-card__cta">
+      <div class="row">
+        <div class="col-md-12">
+          <a href="{{ card.landing_page_url }}" class="btn btn-primary btn-block">{{ 'liquid.partials.bundle_card.link_landing_page' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

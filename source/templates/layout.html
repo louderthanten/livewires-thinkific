@@ -1,0 +1,29 @@
+{% comment %}
+  This is the theme's layout. It defines that base html for the theme. 
+{% endcomment %}
+<!DOCTYPE html>
+<html>
+  <head>
+  {{ required_header_content }}
+  {% include 'meta_tags' %}
+  {% include 'theme_wide_css' %}
+  {% include 'page_specific_css' %}
+  {% include 'site_wide_css' %}
+  {% include 'theme_wide_header_scripts' %}
+  {% include 'page_specific_header_scripts' %}
+  </head>
+  <body>
+    {% if page.header_required %}
+      {% include "header" %}
+    {% endif %}
+    {% comment %} This is where a particular page is displayed {% endcomment %}
+    {{ content_for_layout }}
+    {% if page.footer_required %}
+      {% include 'footer' %}
+    {% endif %}
+    {% include 'page_specific_footer_scripts' %}
+    {% include 'theme_wide_footer_scripts' %}
+    {% include 'site_wide_footer_scripts' %}
+    {{ required_footer_content }}
+  </body>
+</html>

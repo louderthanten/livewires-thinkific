@@ -1,0 +1,19 @@
+{% comment %}
+  This is the course intro video button that appears on course landing pages.
+  It supports Wistia and YouTube.
+{% endcomment %}
+{% if page.course.intro_video_on_wistia %}
+  <a
+      class="btn btn-lg btn-default btn-lg btn-intro-video wistia-popover[height=360,playerColor=F36F36,width=640]"
+      href="//fast.wistia.net/embed/iframe/{{ page.course.video_identifier }}?autoPlay=true&controlsVisibleOnLoad=true&playButton=false&playerColor=F36F36&popover=true&version=v1&videoHeight=360&videoWidth=640">
+    {{ 'liquid.partials.course_intro_video.link_watch_intro_video' | translate }}
+  </a>
+{% elsif page.course.intro_video_on_youtube %}
+    <a class="venobox btn btn-default btn-lg btn-intro-video" data-type="youtube" href="{{ page.course.youtube_video_id }}">
+    {{ 'liquid.partials.course_intro_video.link_watch_intro_video' | translate }}</a>
+    <script>
+    $(function() {
+      $('.venobox').venobox({});
+    });
+  </script>
+{% endif %}

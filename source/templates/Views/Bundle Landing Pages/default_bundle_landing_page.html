@@ -1,0 +1,95 @@
+{% comment %} This is the default Bundle landing page {% endcomment %}
+
+<div class="container landing-page--bundle">
+
+  <div class="row landing__bundle-banner">
+    <div class="col-sm-12">
+      <img src="{{ page.bundle_banner_image_url }}" class="img-responsive" />
+    </div>
+  </div>
+
+  {% comment %} If a users enters a coupon URL ( yoursite.com?coupon=100) they
+  will see a small section that displays details about the coupon. {% endcomment %}
+  {% if page.has_coupon_code %}
+    <div class="row">
+      <div class="col-sm-12">
+        {{ page.render_promotion }}
+      </div>
+    </div>    
+  {% endif %}
+
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>{{ page.bundle_name }}</h1>
+      <div class='landing-page__cta-block'>
+        {% if page.bundle_is_free %}
+          <a href='{{ page.bundle_enroll_for_free_url }}' class='btn btn-primary btn-lg btn-purchase btn-top-free'>
+            {{ page.bundle_enroll_for_free_text }}
+          </a>
+        {% else %}
+          <a href='{{ page.bundle_paid_enroll_url }}' class='btn btn-primary btn-lg btn-top-buy btn-purchase'>
+            {{ page.bundle_buy_button_text }}
+          </a>
+        {% endif %}
+        <div class='bundle-cta-tagline'>
+          {{ page.bundle_tagline }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Display the bundle description {% endcomment %}
+  {% if page.bundle_has_description %}
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        {{ page.bundle_description }}
+      </div>
+    </div>
+    <hr>
+  {% endif %}
+
+
+  {% comment %} Display the bundle cards {% endcomment %}
+  {% if page.bundle_num_of_courses > 0 %}
+    {% assign initial_courses = 6 %}
+    <div class='row'>
+      <div class='col-sm-12'>
+        <h2 class='section-title'>{{ page.bundle_course_contents_description }}</h2>
+        <div id='bundle-contents'>
+          {% for course in page.bundle_courses limit:initial_courses %}
+            {% include 'bundle_course' with course %}
+          {% endfor %}
+          {% for course in page.bundle_courses offset:initial_courses %}
+            <div class='bundle-course--hidden hidden'>
+              {% include 'bundle_course' with course %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% if page.bundle_num_of_courses > initial_courses %}
+      <div id='#see-more-row' class='row bundle-see-more-content'>
+        <div class='col-sm-12 text-center'>
+          <a id='see-all-btn' class='bundle-see-all__button btn btn-default auto'>
+            {{ 'liquid.views.bundle_landing_page.link_view_all' | translate }} {{ page.bundle_num_of_courses }} {{ 'liquid.views.bundle_landing_page.link_courses' | translate }}
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+
+
+    {% comment %} Display any related products (upsells) {% endcomment %}
+  {% if page.has_related_products %}
+    <div class='related-products'>
+      <div class='row'>
+        <div class='col-sm-10 col-sm-offset-1'>
+          {% include "landing_page_upsells" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}     
+
+</div>

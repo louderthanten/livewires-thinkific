@@ -31,6 +31,12 @@ gulp.task('css', function () {
     .pipe(browserSync.reload({stream:true}))
 });
 
+gulp.task('thinkcss', function() {
+  return gulp.src(['source/scss/1_settings/_colors.scss','source/scss/1_settings/_font-faces.scss','source/scss/1_settings/_variables.scss','source/scss/2_tools/*.scss','source/scss/3_generic/*.scss','source/scss/4_elements/*.scss','source/scss/5_components/*.scss','source/scss/6_modules/*.scss','source/scss/7_overrides/*.scss'])
+    .pipe(concat('theme.css'))
+    .pipe(gulp.dest('public'))
+});
+
 gulp.task('critical', function() {
   return gulp.src('public/css/critical.css')
     .pipe(concat.header('<style>'))
@@ -84,7 +90,7 @@ gulp.task('liquify', function () {
 //});
 
 gulp.task('watch', function () {
-  gulp.watch('source/scss/**/*.scss', ['css']);
+  gulp.watch('source/scss/**/*.scss', ['css', 'thinkcss']);
   gulp.watch('source/js/**/*.js', ['js']);
   gulp.watch(['source/templates/**/*.html','data/**/*.json'], ['liquify']).on('change', browserSync.reload);
 });
@@ -106,4 +112,4 @@ gulp.task('browser-sync', function() {
 
 gulp.task('start', ['watch', 'critical', 'browser-sync']);
 
-gulp.task('default', ['css', 'js', 'js-pages', 'critical', 'liquify']);
+gulp.task('default', ['css', 'js', 'js-pages', 'critical', 'liquify', 'thinkcss']);

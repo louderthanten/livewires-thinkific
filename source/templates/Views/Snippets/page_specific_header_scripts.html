@@ -1,0 +1,80 @@
+{% comment %}
+  Place javascript that you need run in the <head> of a specific page here.
+  The name of the page is available as page.page_identifier
+  Note that any javascript placed here must be wrapped in a <script> tag.
+{% endcomment %}
+{% case page.page_identifier %}
+  {% when "site_landing_page" %}
+    {% comment %} Javascript specific to the site landing page {% endcomment %}
+  {% when "course_landing_page" %}
+    {% comment %} Javascript specific to the Course landing page {% endcomment %}
+
+    {% comment %}
+      You can further refine this Javascript if you need to have different Javascript on
+      different Course Landing Pages. To do so, you can check the 'page_name'
+      property of the current page.
+    {% endcomment %}
+
+    {% comment %} Load Wistia scripts if the course has an Intro video {% endcomment %}
+    {% if page.has_course_intro_video %}
+        {% if page.course.intro_video_on_wistia %}
+            <script src="//fast.wistia.net/static/E-v1.js"></script>
+            <script src="//fast.wistia.net/static/popover-v1.js"></script>
+        {% endif %}
+    {% endif %}
+  {% when "bundle_landing_page" %}
+    {% comment %} Javascript specific to the Bundle landing page {% endcomment %}
+
+    {% comment %}
+      You can further refine this Javascript if you need to have different Javascript on
+      different Bundle Landing Pages. To do so, you can check the 'page_name'
+      property of the current page.
+    {% endcomment %}
+
+  {% when "collections_page" %}
+    {% comment %} Javascript specific to the collections page {% endcomment %}
+  {% when "collection_page" %}
+    {% comment %} Javascript specific to the collection page {% endcomment %}
+  {% when "sign_in_page" %}
+    {% comment %} Javascript specific to the sign in page {% endcomment %}
+  {% when "sign_up_page" %}
+    {% comment %} Javascript specific to the sign up page {% endcomment %}
+  {% when "student_dashboard_page" %}
+    {% comment %} Javascript specific to the student dashboard page {% endcomment %}
+  {% when "privacy_policy_page" %}
+    {% comment %} Javascript specific to the privacy policy page {% endcomment %}
+  {% when "terms_of_use_page" %}
+    {% comment %} Javascript specific to the terms of use page {% endcomment %}
+  {% when "checkout_page" %}
+    {% comment %} Javascript specific to the checkout page {% endcomment %}
+  {% when "checkout_thankyou_page" %}
+    {% comment %} Javascript specific to the checkout thankyou page {% endcomment %}
+  {% when "paypal_confirmation_page" %}
+    {% comment %} Javascript specific to the PayPal confirmation page {% endcomment %}
+  {% when "checkout_signin_signup_page" %}
+    {% comment %} Javascript specific to the checkout signin/signup page {% endcomment %}
+  {% when "new_course_review_page" %}
+    {% comment %} Javascript specific to the new course review page {% endcomment %}
+  {% when "edit_course_review_page" %}
+    {% comment %} Javascript specific to the edit course review page {% endcomment %}
+  {% when "my_account_page" %}
+    {% comment %} Javascript specific to the account edit profile page {% endcomment %}
+  {% when "my_account_password_page" %}
+    {% comment %} Javascript specific to the account change password page {% endcomment %}
+  {% when "my_account_notifications_page" %}
+    {% comment %} Javascript specific to the account notifications page {% endcomment %}
+  {% when "my_account_billings_page" %}
+    {% comment %} Javascript specific to the account billings page {% endcomment %}
+  {% when "my_account_order_list_page" %}
+    {% comment %} Javascript specific to the account order history page {% endcomment %}
+  {% when "my_account_order_page" %}
+    {% comment %} Javascript specific to the account single order page {% endcomment %}
+  {% when "my_account_certificates_page" %}
+    {% comment %} Javascript specific to the account certificates page {% endcomment %}
+  {% when "password_reset_request_page" %}
+    {% comment %} Javascript specific to the password reset request page {% endcomment %}
+  {% when "password_reset_sent_page" %}
+    {% comment %} Javascript specific to the password reset email sent page {% endcomment %}
+  {% when "password_reset_page" %}
+    {% comment %} Javascript specific to the password reset page {% endcomment %}
+{% endcase %}

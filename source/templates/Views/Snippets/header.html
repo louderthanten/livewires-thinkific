@@ -1,0 +1,9 @@
+{% comment %}
+  This is the header of your site.
+  Some pages have links in the header and some do not
+{% endcomment %}
+{% if page.header_without_links_required %}
+  {% include 'header_without_links' %}
+{% else %}
+  {% include 'header_with_links' %}
+{% endif %}

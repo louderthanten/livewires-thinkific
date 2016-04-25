@@ -1,0 +1,14 @@
+{% comment %}
+  This is the site landing page.
+{% endcomment %}
+<div class="container">
+
+  <div class="row site-landing__banner">
+    <div class="col-sm-12">
+      <img src="{{ site.banner_url }}" class="img-responsive">
+    </div>
+  </div>
+
+  {% include 'products_card_list' %}
+
+</div>

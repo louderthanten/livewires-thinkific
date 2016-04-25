@@ -1,0 +1,27 @@
+{% comment %}
+  Theme-wide Javascript that will be run on page load of all pages
+  covered by the theme.
+
+  Any javascript in the page should be placed inside a <script> tag, or
+  you can place it within the script tag defined below.
+
+  It is included near the bottom of the page.
+{% endcomment %}
+<script>
+  $(function() {
+    var menuVisible = false;
+    $('.header-nav__mobile-btn').click(function() {
+      if (menuVisible) {
+        $('.header-nav__container').addClass('open');
+        menuVisible = false;
+        return;
+      }
+      $('.header-nav__container').removeClass('open');
+      menuVisible = true;
+    });
+    $('.header-nav__container').click(function() {
+      $(this).addClass('open');
+      menuVisible = false;
+    });
+  });
+ </script>

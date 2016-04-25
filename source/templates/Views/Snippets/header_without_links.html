@@ -1,0 +1,18 @@
+{% comment %}
+  This is the header of your site that has no links.
+  It is primarily used in the checkout to ensure no distractions
+  for the buyer.
+{% endcomment %}
+<header>
+  <div class="container">
+    <div class="header-logo__container">
+      {% if site.has_logo %}
+        <a href="{{ site.home_url }}" class="header-logo">
+          <img src="{{ site.logo_url }}" class="header-logo__image">
+        </a>
+      {% else %}
+        <a href="{{ site.home_url }}" class="header-school-name">{{ site.name }}</a>
+      {% endif %}
+    </div>
+  </div>
+</header>

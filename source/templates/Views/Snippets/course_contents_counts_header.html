@@ -1,0 +1,103 @@
+{% comment %}
+  This is used to show the lessons and their count within a course. For example:
+  3 Videos, 2 Quizzes, etc.
+  This is only used on the curriculum course landing page. 
+{% endcomment %}
+<ul>
+  {% if page.course.has_lessons %}
+    <li>
+      <i class="icon-lesson"></i>
+      <span>
+        {{ page.course.lesson_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_quizzes %}
+    <li>
+      <i class="icon-quiz"></i>
+      <span>
+        {{ page.course.quiz_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_surveys %}
+    <li>
+      <i class="icon-survey"></i>
+      <span>
+        {{ page.course.survey_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_multimedia %}
+    <li>
+      <i class="icon-iframe"></i>
+      <span>
+        {{ page.course.multimedia_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_text %}
+    <li>
+      <i class="icon-htmlitem"></i>
+      <span>
+        {{ page.course.text_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_pdfs %}
+    <li>
+      <i class="icon-pdf"></i>
+      <span>
+        {{ page.course.pdf_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_disqus %}
+    <li>
+      <i class="icon-chat"></i>
+      <span>
+        {{ page.course.disqus_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_audios %}
+    <li>
+      <i class="icon-audio"></i>
+      <span>
+        {{ page.course.audio_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_downloads %}
+    <li>
+      <i class="icon-download"></i>
+      <span>
+        {{ page.course.download_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_presentations %}
+    <li>
+      <i class="icon-presentation"></i>
+      <span>
+        {{ page.course.presentation_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_brillium_exams %}
+    <li>
+      <i class="icon-quiz"></i>
+      <span>
+        {{ page.course.brillium_exam_count }}
+      </span>
+    </li>
+  {% endif %}
+  {% if page.course.has_duration %}
+    <li>
+      <i class="icon-time"></i>
+      <span>
+        {{ page.course.duration }}
+      </span>
+    </li>
+  {% endif %}
+</ul>

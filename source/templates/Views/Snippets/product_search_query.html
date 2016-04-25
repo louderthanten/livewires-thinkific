@@ -1,0 +1,11 @@
+{% comment %}
+  This is the search results area that appears on your course catalog pages.
+{% endcomment %}
+<h4>
+  {% if page.has_search_query %}
+    {{ 'liquid.partials.products_search_query.header_search_result' | translate }}
+    <strong>{{ page.search_query }}</strong>
+  {% else %}
+    {{ 'liquid.partials.products_search_query.header_all' | translate }}
+  {% endif %}
+</h4>

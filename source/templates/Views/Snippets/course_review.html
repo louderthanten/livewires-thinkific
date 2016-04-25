@@ -1,0 +1,78 @@
+{% comment %}
+  This is a list of all course reviews for a course.
+{% endcomment %}
+{% if course.reviews_enabled and course.approved_reviews_count > 0 %}
+  <div class="course-review__wrapper">
+    <h2>
+      {{ 'liquid.partials.course_review.header_review' | translate }} ({{ course.approved_reviews_count }})
+      <span class="star-rating" data-id="{{ course.average_rating }}">
+        {% for index in (1..5) %}
+          <input type="radio" name="rating" value="{{ index }}" />
+          {% star_rating course.average_rating, index %}
+        {% endfor %}
+      </span>
+    </h2>
+
+    {% comment %}
+      Iterate over the first 3 course reviews. You can change this
+      number of reviews to be shown by changing the value of limit
+    {% endcomment %}
+    {% for review in course.course_reviews limit:3 %}
+      <div class="more-reviews">
+        <div class="course-review__container" id="review-container">
+          <h3 class="course-review__title">
+            {{ review.title }}
+          </h3>
+          <div class="course-review__name">
+            {{ 'liquid.partials.course_review.text_by' | translate }} {{ review.user.full_name }}
+          </div>
+          <div class="course-review__stars">
+            <span class="star-rating" data-id="{{ review.rating }}">
+              {% for index in (1..5) %}
+                <input type="radio" name"rating" value="{{index}}"  />
+                {% if index <= review.rating %}
+                  <i></i>
+                {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+          <p class="course-review__text">
+            {{ review.review_text }}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% if course.approved_reviews_count > 3 %}
+      <a class="review-button">
+        {{ 'liquid.partials.course_review.link_read_more' | translate }}
+      </a>
+    {% endif %}
+
+    <div class="more-reviews-toggle">
+      {% for review in course.course_reviews %}
+        <div class="course-review__container" id="review-container">
+          <h3 class="course-review__title">
+              {{ review.title }}
+          </h3>
+          <div class="course-review__name">
+              by {{ review.user.full_name }}
+          </div>
+          <div class="course-review__stars">
+            <span class="star-rating" data-id="{{review.rating}}">
+              {% for index in (1..5) %}
+                <input type="radio" name="rating" value="{{index}}" />
+                {% if index <= review.rating %}
+                  <i></i>
+                {% endif %}
+              {% endfor %}
+            </span>
+          </div>
+          <p class="course-review__text">
+              {{ review.review_text }}
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
