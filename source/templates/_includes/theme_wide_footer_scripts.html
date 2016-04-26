@@ -1,0 +1,69 @@
+<script>
+  $(function() {
+    var menuVisible = false;
+    $('.header-nav__mobile-btn').click(function() {
+      if (menuVisible) {
+        $('.header-nav__container').addClass('open');
+        menuVisible = false;
+        return;
+      }
+      $('.header-nav__container').removeClass('open');
+      menuVisible = true;
+    });
+    $('.header-nav__container').click(function() {
+      $(this).addClass('open');
+      menuVisible = false;
+    });
+  });
+ </script>
+
+    
+
+
+<script>
+  $(function() {
+    var isMobile = false;
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      isMobile = true;
+    }
+    if(!isMobile) {
+      if(window.opener && window.opener !== window &&
+        window.name && window.name == "__thinkific-sales-widget-product__") {
+        var url = window.location.href;
+        $(".move-this-party__btn").attr("href", url).attr("target", "_blank").on("click", function() {
+          setTimeout(function() {
+            window.close();
+          }, 500);
+        });
+        $(".move-this-party__container").removeClass("hidden");
+      }
+      $(".close-move-this-party__btn").on("click", function(e) {
+        e.preventDefault();
+        $(".move-this-party__container").addClass("hidden");
+      });
+    }
+  });
+</script>
+<div class='move-this-party__container hidden'>
+<div class='row move-this-party__text'>
+<div class='col-xs-12'>
+We suggest moving this party over to a full size window.
+<br>
+You'll enjoy it way more.
+</div>
+</div>
+<div class='row move-this-party__buttons'>
+<div class='col-xs-4'>
+<a class='close-move-this-party__btn btn pull-left' href='#'>
+Close
+</a>
+</div>
+<div class='col-xs-8'>
+<a class='move-this-party__btn btn btn-success pull-right' href='#'>
+Go Fullscreen
+</a>
+</div>
+</div>
+</div>
+
+<input name='custom-theme-version' type='hidden' value='1.2.0'>

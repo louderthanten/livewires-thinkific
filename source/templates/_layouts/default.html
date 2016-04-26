@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html>
   <head>
-    <!-- Include meta tags -->
-    {% include '_includes/head.html' %}
+  {% include '_includes/meta_tags.html' %}
+  <link rel="stylesheet" media="all" href="/css/app.css" />
+  {% block css %}{% endblock %}
+  {% include '_includes/theme_wide_header_scripts.html' %}
+  {% block headjs %}{% endblock %}
   </head>
   <body>
+    {% block header %}{% include "_includes/header.html" %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block footer %}{% include "_includes/footer.html" %}{% endblock %}
 
-    <!-- Header section -->
-    {% include '_includes/header.html' %}
-
-    <!-- Content block, child page inject content -->
-    <main class="main" id="main" role="main">
-    {% block page %}{% endblock %}
-    </main>
-
-    <!-- Footer section -->
-    {% include '_includes/footer.html' %}
-
-    <!-- JS Includes -->
-    {% include '_includes/foot.html' %}
+    {% include '_includes/theme_wide_footer_scripts.html' %}
+    {% block js %}{% endblock %}
   </body>
 </html>
