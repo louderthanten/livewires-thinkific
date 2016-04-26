@@ -11,6 +11,7 @@ var uglify = require('gulp-uglify');
 var assets  = require('postcss-assets');
 var gutil = require('gulp-util');
 var twig = require('gulp-twig');
+var neat = require('node-neat').includePaths;
 //var liquify = require('gulp-liquify');
 var data = require('gulp-data');
 var path = require('path');
@@ -24,7 +25,9 @@ gulp.task('css', function () {
   ];
   return gulp.src('source/scss/**/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      includePaths: ['styles'].concat(neat)
+    }).on('error', sass.logError))
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/css'))

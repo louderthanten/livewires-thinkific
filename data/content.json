@@ -1,5 +1,10 @@
 {
 "title": "Live Wires",
 "company": "Louder Than Ten",
-"page-banner-color": "#34b3f6"
+"page-banner-color": "#34b3f6",
+"site": {
+    "banner_url":"",
+    "banner_title": "Primary headline",
+    "banner_subtitle": "Primary subtitle"
+  }
 }

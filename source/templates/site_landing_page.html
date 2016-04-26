@@ -1,57 +1,27 @@
 {% extends "_layouts/default.html" %}
 {% block content %}
-<div id="pages" class="site-landing">
-  <section class="site-landing__banner page-banner">
-    <div class="column site-landing__banner-content">
-      <div class="row">
-        <div class="col-md-12 site-landing__banner-content-inner">
-          <h1 class="site-landing__banner--title">
-            
-              Learn creative skills wherever you are
-            
-          </h1>
-          <h2 class="site-landing__banner--subtitle">
-            
-              Gain qualifications online and find your dream job
-            
-          </h2>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="site-landing__courses">
-    <div class="column">
-      
 
-  <div class="row">
-    
+<section class="row site-landing__banner">
+  <figure>
+    <img src="{{ site.banner_url }}" alt="" />
+  </figure>
+  <div class="primary-content">
+    <h1 class="site-landing__banner--title">
+        {{ site.banner_title }}
+    </h1>
+    <h2 class="site-landing__banner--subtitle">
+        {{ site.banner_subtitle }}
+    </h2>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      
+</section>
 
+<section class="row">
+  <p class="view-more">
+    <a href="http://gocreateacademy.thinkific.com/collections" class="btn btn-large btn-default">
+      View all courses
+    </a>
+  </p>
+</section>
 
-    </div>
-  </div>
-
-
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <div class="view-more">
-            <a href="http://gocreateacademy.thinkific.com/collections" class="btn btn-large btn-default">
-              View all courses
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-      </div>
-
-    </div>
-    
-      
 {% endblock %}

@@ -21,6 +21,27 @@ $text: $black;
 $mid-text: $grey;
 $light-text: $light-grey;
 $accent: $red;
+$accent2: $blue;
+
+// Colours: Site
+// ---------------
+$primary-color: $accent;
+$site-background-color: $background;
+
+// Colours: Buttons
+// ---------------
+$primary-btn-color: $accent;
+$secondary-btn-color: $accent2;
+
+// Colours: Header
+// ---------------
+$header-background-color: $dark-grey;
+$header-text-color: $white;
+
+// Colours: Footer
+// ---------------
+$footer-background-color: $dark-background;
+
 // FONTS
 
 // BLOKK Face for wireframing
@@ -241,6 +262,15 @@ $youtube: #CC181E;
 @function c($palette, $tone: 'core') {
   @return map-get(map-get($palettes, $palette), $tone);
 }
+
+@function dynamic-text($color) {
+  @if (lightness($color) > 85) {
+    @return $text-color; // Lighter background, return dark color
+  } @else {
+    @return $text-color-light; // Darker background, return light color
+  }
+}
+
 //MIXINS
 
 // Rem calculator for font sizes and line heights

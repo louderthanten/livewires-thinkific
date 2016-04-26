@@ -1,0 +1,1217 @@
+@import "bourbon";
+// Includes foundational settings
+@import "1_settings/colors";
+
+/*==============================================================================
+// SASS Variables
+==============================================================================*/
+
+// Colours: Neutral
+// ---------------
+$color-neutral: #cdcdcd;
+$color-neutral-light-1: #eeeeee;
+$color-neutral-light-2: #f3f3f3;
+$color-neutral-light-3: #fefefe;
+$color-neutral-dark-1: #b2b2b2;
+
+// Colours: Text
+// ---------------
+$text-color: #5b5b5b;
+$text-color-light: #ffffff;
+$link-color: $primary-color;
+
+// Colours: Helpers
+// ---------------
+$success-green: #54c670;
+$alert-yellow: #ffed8f;
+
+// Media Queries
+// ---------------
+$screen-sm-min: 480px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+$screen-xxl-min: 1600px;
+
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-sm-max: ($screen-md-min - 1);
+$screen-md-max: ($screen-lg-min - 1);
+$screen-lg-max: ($screen-xl-min - 1);
+
+// Misc
+// --------------
+$border-radius: 3px;
+$section-max-width: 1250px;
+$gutter: 30px;
+
+
+/*==============================================================================
+// Table of contents
+==============================================================================*/
+
+// This makes text colour change if the background colour is too light or dark
+// -------------------
+
+@function dynamic-text($color) {
+  @if (lightness($color) > 85) {
+    @return $text-color; // Lighter background, return dark color
+  } @else {
+    @return $text-color-light; // Darker background, return light color
+  }
+}
+
+/*==============================================================================
+// Table of contents
+==============================================================================*/
+
+// 0. Basics
+// 1. Type
+// 2. Forms
+// 3. Buttons
+// 4. Helpers
+// 5. Course Cards
+// 6. Header
+// 7. Footer
+// 8. Pagination
+// 9. Site Pages
+// 10. Checkout
+// 11. Review Stars
+// 12. Course Landing Page
+// 13. Multi Products
+// 14. Bundle Landing Page
+// 15. Account Pages
+
+/*==============================================================================
+// 0. Basics
+==============================================================================*/
+
+html,
+body {
+  background: $site-background-color;
+}
+
+/*==============================================================================
+// 1. Type Converted to EM using http://pxtoem.com/
+==============================================================================*/
+
+body,
+input,
+textarea,
+button,
+select {
+  color: $text-color;
+  font-family: "Open Sans", sans-serif;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  display: block;
+  line-height: 1.2;
+  margin: 0 0 1em;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2.188em; //35px
+}
+
+h2 {
+  font-size: 1.875em; //30px
+}
+
+h3 {
+  font-size: 1.625em; //26px
+}
+
+h4 {
+  font-size: 1.438em; // 23px
+}
+
+h5 {
+  font-size: 1.125em; //18px
+}
+
+p {
+  font-size: 1em; //16px
+  line-height: 1.5;
+}
+
+hr {
+  clear: both;
+  border-top: 1px solid $color-neutral-light-1;
+  border-width: 1px 0 0;
+  margin: 50px 0;
+  height: 0;
+}
+
+em {
+  font-style: italic;
+}
+
+b, strong {
+  font-weight: 600;
+}
+
+small {
+  font-size: 80%;
+}
+
+sup, sub {
+  position: relative;
+  font-size: 60%;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.5em;
+}
+
+a {
+  color: $link-color;
+
+  &:hover {
+    color: darken($link-color, 12%);
+  }
+}
+
+ul, ol {
+  margin: 0 0 ($gutter / 2) 20px;
+  padding: 0;
+}
+
+ol { list-style: decimal; }
+ul ul, ul ol,
+ol ol, ol ul { margin: 4px 0 5px 20px; }
+li { margin-bottom: 0.25em; }
+
+.list-inline {
+  margin-left: 0;
+
+  li {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+}
+
+.list-unstyle {
+  list-style: none;
+  padding: 0;
+}
+
+.label {
+  background: $primary-color;
+  padding: 0 5px;
+}
+
+/*==============================================================================
+// 2. Forms
+==============================================================================*/
+
+input:focus::-webkit-input-placeholder { color: transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+
+.form-control {
+  background: $color-neutral-light-3;
+  border: 1px solid $color-neutral;
+  height: 40px;
+  padding: 6px 15px;
+  box-shadow: none;
+  font-size: 1em; //16px
+}
+
+label {
+  display: block;
+}
+
+// I am found only on the collections page.
+input[type="search"] {
+  box-sizing: border-box;
+  border-radius: $border-radius;
+  padding: 10px 15px;
+  background: none;
+  border: 1px solid transparentize($text-color,0.9);
+
+  &:focus {
+    background: #ffffff;
+  }
+}
+
+input[type=checkbox],
+input[type=radio] {
+  margin: 2px 0 0;
+}
+
+.radio,
+.checkbox {
+  display: block;
+  min-height: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 20px;
+  vertical-align: middle;
+}
+
+/*==============================================================================
+// 3. Buttons
+==============================================================================*/
+
+.btn {
+  display: inline-block;
+  width: auto;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  font-weight: 500;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: none;
+  }
+}
+
+// Button: Modifiers
+// -------------
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+// Button: Colours
+// -------------
+.btn-primary {
+  background: $primary-btn-color;
+  color: dynamic-text($primary-btn-color);
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: darken($primary-btn-color, 10%);
+    color: dynamic-text($primary-btn-color);
+  }
+}
+
+.btn-secondary {
+  background: $secondary-btn-color;
+  color: dynamic-text($secondary-btn-color);
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: darken($secondary-btn-color, 10%);
+    color: dynamic-text($secondary-btn-color);
+  }
+}
+
+.btn-default {
+  background: $color-neutral-dark-1;
+  color: #ffffff;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: darken($color-neutral-dark-1, 10%);
+  }
+}
+
+/*==============================================================================
+// 4. Helpers
+==============================================================================*/
+
+.visible {
+  display: inline-block !important;
+}
+
+// http://embedresponsively.com/
+// ---------------
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+
+  & iframe,
+  & object,
+  & embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*==============================================================================
+// 5. Course Cards
+==============================================================================*/
+
+.course-card {
+  height: 451px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  border: 1px solid $color-neutral-light-1;
+  background: #ffffff;
+  position: relative;
+}
+
+.course-card__img {
+  width: 100%;
+  height: auto;
+}
+
+.course-card__img-container {
+  overflow: hidden;
+  max-height: 220px;
+}
+
+// Course card body
+// --------------
+.course-card__body {
+  padding: 20px 20px 10px;
+}
+
+.course-card__price {
+  text-align: right;
+}
+
+.course-card__title {
+  font-size: 1.125em; //18px
+  padding-top: 15px;
+}
+
+.course-card__description {
+  margin-bottom: 10px;
+  font-size: 0.875em; //14px
+}
+
+
+// Course card buttons
+// --------------
+
+.course-card__cta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.course-card__cta-secondary {
+  margin-bottom: 10px;
+}
+
+// Progress Card
+// ---------------
+.progress-card {
+  cursor: default;
+
+  .course-card__title {
+    text-align: center;
+  }
+
+  .progress-completion {
+    font-size: 1.875em; //30px
+    text-align: center;
+  }
+
+  .progress-line {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    height: 3px;
+    margin: 10px 0;
+
+    .progress-line-percent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: $primary-color;
+    }
+
+    .progress-line-bar {
+      height: 3px;
+      background: $color-neutral;
+    }
+  }
+}
+
+// Cards: Media Queries
+// ---------------
+
+@media screen
+and (min-width: $screen-lg-min) {
+  .course-card__img-container {
+    max-height: 185px;
+  }
+}
+
+@media screen
+and (min-width: $screen-md-min)
+and (max-width: $screen-md-max) {
+
+  .course-card {
+    height: 481px;
+  }
+
+  .course-card__img-container {
+    max-height: 235px;
+  }
+
+  .course-card__title {
+    font-size: 1.063em; //17px
+  }
+}
+
+@media screen
+and (max-width: $screen-sm-max) {
+  .course-card {
+    max-width: 370px;
+    height: auto;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 20px;
+  }
+
+  .course-card__cta {
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  .course-card__body {
+    .star-rating {
+      margin: 10px 0;
+    }
+  }
+}
+
+/*==============================================================================
+// 6. Header
+==============================================================================*/
+
+header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  background: $header-background-color;
+
+  a {
+    color: $header-text-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: darken($header-text-color, 20%);
+    }
+  }
+}
+
+// Navbar: Logo
+// ---------------
+
+.header-logo__image {
+  width: auto;
+  max-height: 35px;
+  margin-right: 20px;
+}
+
+.header-school-name {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 1.875em; //30px
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Navbar: Links
+// ---------------
+
+.header-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.header-nav__item {
+  font-size: 0.875em; //14px
+}
+
+// Navbar: Dropdown
+// ---------------
+
+.dropdown {
+  margin-left: 15px;
+}
+
+.dropdown-toggle {
+  margin-left: 10px;
+}
+
+// Override the default Bootstrap styles
+.dropdown-menu {
+  top: 22px;
+  right: 0;
+  left: auto;
+  border-radius: 0;
+  background: $header-background-color;
+  border: 0;
+
+  & > li {
+    text-align: right;
+  }
+
+  & > li > a {
+    color: $header-text-color;
+  }
+
+  & > li > a:hover,
+  & > li > a:active,
+  & > li > a:focus {
+    color: $header-background-color;
+    background-color: $header-text-color;
+  }
+}
+
+// Navbar: Mobile
+// ---------------
+
+.header-nav__mobile-btn {
+  display: none;
+  margin-right: 0;
+  padding: 6px 10px;
+  color: $header-text-color;
+  border: 1px solid $header-text-color;
+  background: none;
+  border-radius: $border-radius;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $header-background-color;
+    background-color: $header-text-color;
+  }
+}
+
+// Navbar: Media Queries
+// ---------------
+
+@media only screen
+and (min-width: $screen-lg-min) {
+
+  header .column {
+    display: table;
+    width: 100%;
+  }
+
+  .header-logo__container {
+    display: table-cell;
+    width: 1px;
+    white-space: nowrap;
+  }
+
+  .header-nav__container {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  .header-nav {
+    display: table;
+    width: 100%;
+  }
+
+  .header-nav__list {
+    display: table-cell;
+  }
+
+  .header-nav__left,
+  .header-nav__right {
+    width: auto;
+  }
+
+  .header-nav__right {
+    text-align: right;
+  }
+
+  .header-nav__item {
+    display: inline-block;
+    vertical-align: sub;
+  }
+
+  .header-nav__item + .header-nav__item {
+    margin-left: 10px;
+  }
+}
+
+@media only screen
+and (max-width: $screen-md-max) {
+
+  .header-nav {
+    padding-top: 15px;
+  }
+
+  .header-school-name {
+    margin-right: 85px;
+  }
+
+  .header-nav__container {
+    display: none;
+  }
+
+  // Mobile menu adds open close class when toggled
+  .header-nav__container.open{
+    display: block;
+  }
+
+  .header-nav__item {
+    display: block;
+    text-align: center;
+    font-size: 0.938em; //15px
+  }
+
+  .header-nav__link {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .header-logo__container {
+    position: relative;
+  }
+
+  .header-nav__mobile-btn {
+    position: absolute;
+    display: block;
+    top: 50%;
+    right: 0;
+    @include transform(translateY(-50%));
+  }
+
+  .dropdown {
+    display: none;
+  }
+}
+
+/*==============================================================================
+// 7. Footer
+==============================================================================*/
+
+footer {
+  margin-top: 30px;
+  padding: 30px 0;
+  text-align: center;
+  background: $footer-background-color;
+}
+
+.footer-nav {
+  padding: 0;
+  margin: 0 0 15px 0;
+  list-style: none;
+
+  .footer-nav__item {
+    display: inline-block;
+  }
+
+  .footer-nav__item + .footer-nav__item {
+    margin-left: 10px;
+  }
+}
+
+/*==============================================================================
+// 8. Pagination
+==============================================================================*/
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+  color: $primary-color;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+  color: $primary-color;
+}
+
+/*==============================================================================
+// 9. Site Pages
+==============================================================================*/
+
+.site-landing__banner {
+  margin-bottom: $gutter;
+}
+
+.products__filters {
+  margin-bottom: $gutter;
+
+  select, input {
+    margin-bottom: 5px;
+  }
+
+  [type="search"] {
+    width: 100%;
+  }
+}
+
+.student-dashboard__hero {
+  margin-bottom: $gutter;
+}
+
+/*==============================================================================
+// 10. Checkout
+==============================================================================*/
+
+.checkout-form__purchase {
+  text-align: center;
+  margin-bottom: $gutter;
+}
+
+.checkout-form__purchase-img {
+  margin: 0 auto $gutter;
+  max-width: 60%;
+  height: auto;
+}
+
+.checkout-form__purchase-description {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: ($gutter / 2) ;
+}
+
+.checkout-form__bottom {
+  text-align: center;
+  padding: ($gutter / 2);
+}
+
+.paypal-button-row {
+  text-align: right;
+  padding-top: 5px;
+  margin-bottom: ($gutter / 2);
+
+  .paypal-button-row__text {
+    padding-bottom: 5px;
+  }
+}
+
+.order-product__list {
+  margin-bottom: 10px;
+
+  .row {
+    margin-bottom: 10px;
+  }
+}
+
+.order-product__coupon {
+  margin-bottom: 10px;
+}
+
+.order-security {
+  padding-top: 20px;
+  text-align: center;
+}
+
+// Checkout: Progress bar
+// -------------
+
+#progressbar {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $gutter 0;
+  text-align: center;
+  font-size: 14px;
+
+  li {
+    display: inline-block;
+    padding: 5px 10px;
+  }
+
+  li.active {
+    border-radius: $border-radius;
+    background: $color-neutral-light-1;
+    color: $text-color;
+  }
+}
+
+
+// Checkout: Mobile
+// ---------------
+
+@media only screen
+and (max-width: $screen-sm-max) {
+  .checkout-thankyou__bundle-item {
+    text-align: center;
+    margin-bottom: $gutter;
+  }
+}
+
+/*==============================================================================
+// 11. Review Stars
+==============================================================================*/
+
+.star-rating {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 90px;
+  height: 18px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=");
+  background-size: contain;
+  font-size: 0;
+  white-space: nowrap;
+
+  i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 20%;
+    height: 100%;
+    opacity: 0;
+    background: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=");
+    background-size: contain;
+  }
+
+  input {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  i ~ i {
+    width: 40%;
+  }
+
+  i ~ i ~ i {
+    width: 60%;
+  }
+
+  i ~ i ~ i ~ i {
+    width: 80%;
+  }
+
+  i ~ i ~ i ~ i ~ i {
+    width: 100%;
+  }
+}
+
+.star-rating__input {
+  input {
+    position: relative;
+
+    &:hover + i,
+    &:checked + i {
+      opacity: 1;
+    }
+  }
+}
+
+.star-rating__filled {
+  position: relative;
+
+  i {
+    opacity: 1;
+  }
+}
+
+.star_rating__single {
+  width: 25px;
+}
+
+
+/*==============================================================================
+// 12. Course Landing Page
+==============================================================================*/
+
+.landing__course-banner {
+  margin-bottom: $gutter;
+}
+
+.course-promotion {
+  padding: 10px;
+  background: $color-neutral-light-1;
+}
+
+.instructor__img {
+  margin-bottom: $gutter;
+}
+
+// Landing: Course Curriculum
+// --------------
+
+.landing__course-curriculum {
+
+  // Styles chapter in the curriculum list
+  .curriculum-chapter {
+    margin: 0 0 10px 0;
+    border: 1px solid $color-neutral-light-1;
+  }
+
+  // Container for the chapter header
+  .curriculum-chapter-header {
+    padding: 10px 15px;
+    background: $color-neutral;
+
+
+    .chapter-time {
+      color: #ffffff;
+      text-align: right;
+    }
+  }
+
+  .chapter-header {
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  // Container for the chapter header
+  .chapter-list-item {
+    position: relative;
+    padding: 10px 25px 10px 15px;
+    color: $text-color;
+    border-bottom: 1px solid $color-neutral-light-1;
+
+    .chapter-list-item__link {
+      color: $text-color;
+      display: block;
+    }
+
+    i {
+      @include transform(translateY(-50%));
+      position: absolute;
+      top: 50%;
+      right: 25px;
+      font-size: 1.250em; //20px
+      color: $text-color;
+    }
+  }
+
+  // This is the button that open up the chapter contents list
+  .chapter-toggle {
+    border-radius: 0;
+    border: 0;
+    background: #ffffff;
+  }
+
+  .course-main-cta {
+    padding-top: 36px;
+  }
+
+  .toggle-content {
+    background: $color-neutral-light-1;
+    padding: 10px 5px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+// Landing: Media Queries
+// ---------------
+
+@media only screen
+and (max-width: $screen-xs-max) {
+
+  .landing__course-curriculum {
+
+    .curriculum-chapter-header {
+      padding: 5px 15px !important;
+    }
+
+    .toggle-content {
+      padding: 0 !important;
+    }
+
+    .course-curriculum  .chapter-time {
+      text-align: left;
+    }
+  }
+}
+
+// Landing: Course Reviews
+// ------------
+
+.course-review__container {
+  margin-bottom: $gutter;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.course-review__name {
+  margin-bottom: 18px;
+}
+
+.course-review__stars {
+  margin-bottom: 12px;
+}
+
+.course-review__title {
+  margin-bottom: 12px;
+  font-weight: normal;
+}
+
+/*==============================================================================
+// 13. Multi Products
+// Shows multiple products on a single landing page
+==============================================================================*/
+
+.multi-products,
+.course-multi-products {
+
+  .multi-product__item {
+    @include display(flex);
+    margin: 0 0 6px 0;
+  }
+
+  .multi-product__buy {
+    @include display(flex);
+    padding: 0;
+  }
+
+  .multi-product__cta {
+    border-radius: 0;
+    @include display(flex);
+    @include align-items (center);
+    @include justify-content (center);
+    @include flex(1);
+    font-size: 1em; //16px
+  }
+
+  .multi-product__description {
+    padding: 10px 18px;
+    background: $color-neutral-light-2;
+
+    .price {
+      line-height: 1.5;
+      font-weight: 600;
+    }
+  }
+}
+
+// Multi Products: Media Queries
+// --------------
+
+@media only screen
+and (max-width: $screen-sm-max) {
+
+  .multi-products,
+  .course-multi-products {
+
+    .multi-product__item {
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .multi-product__cta {
+      padding: 3px;
+    }
+  }
+}
+
+/*==============================================================================
+// 14. Bundle Landing Page
+==============================================================================*/
+
+.landing__bundle-banner {
+  margin-bottom: $gutter;
+}
+
+// a single line that sits under the button. Kind of a little extra upsell
+.bundle-cta-tagline {
+  margin-top: 20px;
+}
+
+.bundle-content__item {
+  padding: 10px;
+  border: 1px solid $color-neutral-light-1;
+
+  .row {
+    @include display(flex);
+    @include align-items(center);
+  }
+}
+
+.bundle-content__item-img {
+  border-radius: $border-radius;
+  height: auto;
+  width: 100%;
+}
+
+.bundle-content__item-title {
+  font-size: 1.125em; //18px
+  margin-bottom: 5px;
+}
+
+.bundle-content__item + .bundle-content__item,
+.bundle-content__item + .bundle-course--hidden,
+.bundle-course--hidden + .bundle-course--hidden {
+  margin-top: 12px;
+}
+
+.bundle-see-more-content {
+  padding-top: 32px;
+}
+
+
+// Bundle Landing Page: Media Queries
+// --------------
+
+@media only screen
+and (max-width: $screen-xs-max) {
+
+  .bundle-content__item-title {
+    font-size: 1em; //16px;
+  }
+}
+
+/*==============================================================================
+// 15. Account Pages
+==============================================================================*/
+
+.account-content-profile-img {
+  margin-bottom: 15px;
+
+  .btn-upload, .img-circle {
+    margin-bottom: 10px;
+  }
+}
+
+.list-group-item.active,
+.list-group-item.active:focus,
+.list-group-item.active:hover {
+  background-color: $color-neutral-light-1;
+  border-color: #dddddd;
+  color: $text-color;
+}

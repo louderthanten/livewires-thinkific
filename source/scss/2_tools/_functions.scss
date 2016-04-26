@@ -45,3 +45,11 @@
 @function c($palette, $tone: 'core') {
   @return map-get(map-get($palettes, $palette), $tone);
 }
+
+@function dynamic-text($color) {
+  @if (lightness($color) > 85) {
+    @return $text-color; // Lighter background, return dark color
+  } @else {
+    @return $text-color-light; // Darker background, return light color
+  }
+}
